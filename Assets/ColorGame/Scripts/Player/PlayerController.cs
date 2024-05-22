@@ -18,6 +18,7 @@ namespace ColorGame.Scripts.Player
         private void PlayerJump()
         {
             var forceVector = new Vector2(0, jumpStrength);
+            _rigidbody.velocity = Vector2.zero;
             _rigidbody.AddForce(forceVector, ForceMode2D.Impulse);
         }
     }

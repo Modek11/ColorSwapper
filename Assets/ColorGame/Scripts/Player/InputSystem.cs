@@ -40,17 +40,6 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""22a70754-872f-4358-bbb3-98c56b2fb0d6"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""MainScheme"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""6f19efc2-49f3-4494-aa04-17d3e28e0246"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
