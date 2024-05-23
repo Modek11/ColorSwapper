@@ -10,6 +10,7 @@ namespace ColorGame.Scripts.GameHandlers
         [SerializeField] private ColorPalettesHolder colorPalettesHolder;
 
         public ColorPalette CurrentActiveColorPalette { get; private set; }
+        public Color CurrentActiveColor { get; private set; }
 
         protected override void Awake()
         {
@@ -18,6 +19,9 @@ namespace ColorGame.Scripts.GameHandlers
             //TODO: check color palette from save file
             var randomNumber = Random.Range(0, colorPalettesHolder.colorPalettes.Count);
             CurrentActiveColorPalette = colorPalettesHolder.colorPalettes[randomNumber];
+
+            var randomColorIndex = Random.Range(0, CurrentActiveColorPalette.Count);
+            CurrentActiveColor = CurrentActiveColorPalette[randomColorIndex];
         }
     }
 }

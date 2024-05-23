@@ -10,10 +10,10 @@ namespace ColorGame.Scripts
         [SerializeField] protected bool enableRotation;
         [SerializeField] protected bool invertRotation;
         [SerializeField] protected float rotationDuration;
-        [SerializeField] protected List<SpriteRenderer> colorA;
-        [SerializeField] protected List<SpriteRenderer> colorB;
-        [SerializeField] protected List<SpriteRenderer> colorC;
-        [SerializeField] protected List<SpriteRenderer> colorD;
+        [SerializeField] protected List<SpriteRenderer> colorAList;
+        [SerializeField] protected List<SpriteRenderer> colorBList;
+        [SerializeField] protected List<SpriteRenderer> colorCList;
+        [SerializeField] protected List<SpriteRenderer> colorDList;
 
         protected void Start()
         {
@@ -37,10 +37,10 @@ namespace ColorGame.Scripts
         {
             var colorPalette = GameHandler.Instance.CurrentActiveColorPalette;
             
-            SetupColor(colorA, colorPalette.colorA);
-            SetupColor(colorB, colorPalette.colorB);
-            SetupColor(colorC, colorPalette.colorC);
-            SetupColor(colorD, colorPalette.colorD);
+            SetupColor(colorAList, colorPalette.colorA);
+            SetupColor(colorBList, colorPalette.colorB);
+            SetupColor(colorCList, colorPalette.colorC);
+            SetupColor(colorDList, colorPalette.colorD);
         }
 
         private void SetupColor(List<SpriteRenderer> colorList, Color color)
