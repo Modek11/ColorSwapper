@@ -3,7 +3,7 @@ using ColorGame.Scripts.Patterns;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace ColorGame.Scripts
+namespace ColorGame.Scripts.GameHandlers
 {
     public class GameHandler : Singleton<GameHandler>
     {
