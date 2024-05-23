@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!212 &426122262 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1999378188515264036, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
-  m_PrefabInstance: {fileID: 558498197}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,42 +272,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2449330605479864559, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
-      propertyPath: rotationDuration
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2449330605479864559, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
-      propertyPath: color1.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2449330605479864559, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
-      propertyPath: color2.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2449330605479864559, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
-      propertyPath: color3.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2449330605479864559, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
-      propertyPath: color4.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2449330605479864559, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
-      propertyPath: color1.Array.data[0]
-      value: 
-      objectReference: {fileID: 426122262}
-    - target: {fileID: 2449330605479864559, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
-      propertyPath: color2.Array.data[0]
-      value: 
-      objectReference: {fileID: 1502555847}
-    - target: {fileID: 2449330605479864559, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
-      propertyPath: color3.Array.data[0]
-      value: 
-      objectReference: {fileID: 752804676}
-    - target: {fileID: 2449330605479864559, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
-      propertyPath: color4.Array.data[0]
-      value: 
-      objectReference: {fileID: 2095422721}
     - target: {fileID: 3414577554549201400, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -327,7 +286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3414577554549201400, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3414577554549201400, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
       propertyPath: m_LocalRotation.x
@@ -339,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3414577554549201400, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3414577554549201400, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -351,7 +310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3414577554549201400, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 45
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -486,11 +445,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &752804676 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 298477238591675730, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
-  m_PrefabInstance: {fileID: 558498197}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &862797106
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,11 +681,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!212 &1502555847 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 414918472506731175, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
-  m_PrefabInstance: {fileID: 558498197}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1571884614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,11 +1217,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpStrength: 10
---- !u!212 &2095422721 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 7014598348779826347, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
-  m_PrefabInstance: {fileID: 558498197}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

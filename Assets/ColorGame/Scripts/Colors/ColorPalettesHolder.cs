@@ -12,10 +12,10 @@ namespace ColorGame.Scripts.Colors
         {
             foreach (var singleColorPalette in colorPalettes)
             {
-                singleColorPalette.color1.a = 255;
-                singleColorPalette.color2.a = 255;
-                singleColorPalette.color3.a = 255;
-                singleColorPalette.color4.a = 255;
+                singleColorPalette.colorA.a = 255;
+                singleColorPalette.colorB.a = 255;
+                singleColorPalette.colorC.a = 255;
+                singleColorPalette.colorD.a = 255;
             }
         }
     }

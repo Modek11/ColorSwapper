@@ -7,16 +7,16 @@ namespace ColorGame.Scripts.Obstacles
     public class BaseObstacleHandler : MonoBehaviour
     {
         [SerializeField] private float rotationDuration;
-        [SerializeField] private List<SpriteRenderer> color1;
-        [SerializeField] private List<SpriteRenderer> color2;
-        [SerializeField] private List<SpriteRenderer> color3;
-        [SerializeField] private List<SpriteRenderer> color4;
+        [SerializeField] private List<SpriteRenderer> colorA;
+        [SerializeField] private List<SpriteRenderer> colorB;
+        [SerializeField] private List<SpriteRenderer> colorC;
+        [SerializeField] private List<SpriteRenderer> colorD;
 
         protected void Start()
         {
             SetupColors();
 
-            var rotation = new Vector3(0, 0, 360);
+            var rotation = new Vector3(0, 0, 180);
             transform.DORotate(rotation, rotationDuration).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear)
                 .SetLink(gameObject, LinkBehaviour.KillOnDisable);
         }
@@ -25,10 +25,10 @@ namespace ColorGame.Scripts.Obstacles
         {
             var colorPalette = GameHandler.Instance.CurrentActiveColorPalette;
             
-            SetupColor(color1, colorPalette.color1);
-            SetupColor(color2, colorPalette.color2);
-            SetupColor(color3, colorPalette.color3);
-            SetupColor(color4, colorPalette.color4);
+            SetupColor(colorA, colorPalette.colorA);
+            SetupColor(colorB, colorPalette.colorB);
+            SetupColor(colorC, colorPalette.colorC);
+            SetupColor(colorD, colorPalette.colorD);
         }
 
         private void SetupColor(List<SpriteRenderer> colorList, Color color)
