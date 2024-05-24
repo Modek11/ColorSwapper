@@ -12,6 +12,5 @@ namespace ColorGame.Scripts.GameHandlers
         public ColorsHandler ColorsHandler => colorsHandler;
         public PlayerCollisionHandler PlayerCollisionHandler => playerCollisionHandler;
         public ObjectSpawner ObjectSpawner => objectSpawner;
-
     }
 }

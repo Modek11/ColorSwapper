@@ -1349,10 +1349,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spaceBetweenObjects: 1.5
   obstacles:
-  - {fileID: 2449330605479864559, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
-  - {fileID: 2449330605479864559, guid: 536510362f8efc3409a43cacde6391bd, type: 3}
-  - {fileID: 2449330605479864559, guid: 84cc1ad26a0d9424db53743a3a457fcd, type: 3}
-  colorChanger: {fileID: 3976177248883950497, guid: 040fb39bbccb1f649b6e0ffae95bb5ee, type: 3}
+  - {fileID: 3255246689873372464, guid: 2dc90bb4202d8d841b605067403da3c0, type: 3}
+  - {fileID: 3255246689873372464, guid: 48ade7205b3578d418b8620e476a9c5c, type: 3}
+  - {fileID: 3255246689873372464, guid: 6baaf7681d4650c43adae7be004d1e48, type: 3}
+  colorChanger: {fileID: 3976177248883950497, guid: 47986a5b52bc04b4cabdee6d333afc9c, type: 3}
 --- !u!4 &1674861618266701162
 Transform:
   m_ObjectHideFlags: 0

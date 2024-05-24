@@ -109,6 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a93c39c7762f564c8b992369cdcc84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 1027980682017701019}
+  playerSpriteRenderer: {fileID: 7622923080260648157}
   jumpStrength: 6.5
 --- !u!1 &4312445633721389848
 GameObject:
