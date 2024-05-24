@@ -1,22 +1,22 @@
 using System;
 using ColorGame.Scripts.Colors.Globals;
+using ColorGame.Scripts.GameHandlers;
 using UnityEngine;
 
 namespace ColorGame.Scripts.Player
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField] private Rigidbody2D rb;
+        [SerializeField] private SpriteRenderer playerSpriteRenderer;
         [SerializeField] private float jumpStrength;
-        
-        private Rigidbody2D _rigidbody;
         
         public event Action<GameObject> OnPlayerPickup;
         public event Action<GameObject> OnPlayerDie;
         
         private void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
-            
+            GameHandler.Instance.ColorsHandler.OnGlobalColorChanged += color => playerSpriteRenderer.color = color;
             InputSystemController.InitializeInputSystem();
             InputSystemController.OnJumpPerformed += PlayerJump;
         }
@@ -24,13 +24,13 @@ namespace ColorGame.Scripts.Player
         private void PlayerJump()
         {
             var forceVector = new Vector2(0, jumpStrength);
-            _rigidbody.velocity = Vector2.zero;
-            _rigidbody.AddForce(forceVector, ForceMode2D.Impulse);
+            rb.velocity = Vector2.zero;
+            rb.AddForce(forceVector, ForceMode2D.Impulse);
         }
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag(GameTags.Collectable))
+            if (other.CompareTag(GameTags.ColorChanger) || other.CompareTag(GameTags.Star))
             {
                 OnPlayerPickup?.Invoke(other.gameObject);
             }

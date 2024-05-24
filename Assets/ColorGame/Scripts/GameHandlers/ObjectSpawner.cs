@@ -23,6 +23,8 @@ namespace ColorGame.Scripts.GameHandlers
                 var randomIndex = Random.Range(0, obstacles.Count);
                 SpawnObstacle(obstacles[randomIndex]);
             }
+            
+            GameHandler.Instance.ColorsHandler.ChangeCurrentActiveColor();
         }
 
         private void SpawnObstacle(BaseObjectController objectToSpawn)

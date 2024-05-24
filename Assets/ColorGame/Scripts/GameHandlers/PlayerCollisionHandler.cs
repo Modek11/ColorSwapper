@@ -1,3 +1,4 @@
+using ColorGame.Scripts.Colors.Globals;
 using ColorGame.Scripts.Player;
 using UnityEngine;
 
@@ -16,8 +17,16 @@ namespace ColorGame.Scripts.GameHandlers
         
         private void OnPlayerPickup(GameObject obj)
         {
-            //TODO: check collectable, change colors / add start amount of stars
-            Debug.Log("Collectable!");
+            if (obj.CompareTag(GameTags.ColorChanger))
+            {
+                GameHandler.Instance.ColorsHandler.ChangeCurrentActiveColor();
+            }
+
+            if (obj.CompareTag(GameTags.Star))
+            {
+                //TODO: star implementation
+            }
+            
             Destroy(obj);
         }
 

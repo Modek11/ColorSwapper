@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ColorGame.Scripts.Colors;
 using ColorGame.Scripts.GameHandlers;
 using DG.Tweening;
 using UnityEngine;
@@ -12,17 +13,30 @@ namespace ColorGame.Scripts
         [SerializeField] protected bool enableRotation;
         [SerializeField] protected bool invertRotation;
         [SerializeField] protected float rotationDuration;
-        [SerializeField] protected List<SpriteRenderer> colorAList;
-        [SerializeField] protected List<SpriteRenderer> colorBList;
-        [SerializeField] protected List<SpriteRenderer> colorCList;
-        [SerializeField] protected List<SpriteRenderer> colorDList;
+        [SerializeField] protected List<ColorElement> colorElementsAList;
+        [SerializeField] protected List<ColorElement> colorElementsBList;
+        [SerializeField] protected List<ColorElement> colorElementsCList;
+        [SerializeField] protected List<ColorElement> colorElementsDList;
+
+        protected List<List<ColorElement>> colorElementsList;
 
         private float _obstacleHeight;
         //TODO: star should be created here, prob as a list because some obstacles can have more than one
         
         public float ObstacleHeight => GetObstacleHeight();
 
-        protected void Start()
+        protected virtual void Awake()
+        {
+            colorElementsList = new List<List<ColorElement>>()
+            {
+                colorElementsAList,
+                colorElementsBList,
+                colorElementsCList,
+                colorElementsDList
+            };
+        }
+
+        protected virtual void Start()
         {
             SetupColors();
 
@@ -55,22 +69,17 @@ namespace ColorGame.Scripts
         protected void SetupColors()
         {
             var colorPalette = GameHandler.Instance.ColorsHandler.CurrentActiveColorPalette;
-            
-            SetupColor(colorAList, colorPalette.colorA);
-            SetupColor(colorBList, colorPalette.colorB);
-            SetupColor(colorCList, colorPalette.colorC);
-            SetupColor(colorDList, colorPalette.colorD);
-        }
 
-        protected void SetupColor(List<SpriteRenderer> colorList, Color color)
-        {
-            foreach (var spriteRenderer in colorList)
+            for (var i = 0; i < colorElementsList.Count; i++)
             {
-                spriteRenderer.color = color;
+                foreach (var element in colorElementsList[i])
+                {
+                    element.SpriteRenderer.color = colorPalette[i];
+                }
             }
         }
 
-        private void OnValidate()
+        protected void OnValidate()
         {
             if (boxCollider2D == null)
             {

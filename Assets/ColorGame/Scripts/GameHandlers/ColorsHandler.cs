@@ -1,5 +1,7 @@
+using System;
 using ColorGame.Scripts.Colors;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ColorGame.Scripts.GameHandlers
 {
@@ -7,16 +9,36 @@ namespace ColorGame.Scripts.GameHandlers
     {
         [SerializeField] private ColorPalettesHolder colorPalettesHolder;
 
+        private int _colorIndex;
+        private int[] _allowedIndexes = new int[3];
+
         public ColorPalette CurrentActiveColorPalette { get; private set; }
         public Color CurrentActiveColor { get; private set; }
+        
+        public event Action<Color> OnGlobalColorChanged;
+
 
         private void Awake()
         {
-            var randomNumber = Random.Range(0, colorPalettesHolder.colorPalettes.Count);
-            CurrentActiveColorPalette = colorPalettesHolder.colorPalettes[randomNumber];
+            //TODO: check color palette from save file
+            ChangeCurrentActiveColorPalette();
+        }
 
-            var randomColorIndex = Random.Range(0, CurrentActiveColorPalette.Count);
-            CurrentActiveColor = CurrentActiveColorPalette[randomColorIndex];
+        private void ChangeCurrentActiveColorPalette()
+        {
+            var randomIndex = Random.Range(0, colorPalettesHolder.colorPalettes.Count);
+            CurrentActiveColorPalette = colorPalettesHolder.colorPalettes[randomIndex];
+        }
+
+        public void ChangeCurrentActiveColor()
+        {
+            var randomIndex = Random.Range(0, CurrentActiveColorPalette.Count);
+            Debug.Log($"{randomIndex} ||| {_colorIndex}");
+            _colorIndex = randomIndex != _colorIndex ? randomIndex :
+                _colorIndex < 2 ? _colorIndex + 1 : _colorIndex - 1;
+            
+            CurrentActiveColor = CurrentActiveColorPalette[_colorIndex];
+            OnGlobalColorChanged?.Invoke(CurrentActiveColor);
         }
     }
 }
