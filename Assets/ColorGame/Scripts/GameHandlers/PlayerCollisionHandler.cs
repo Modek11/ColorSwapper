@@ -10,9 +10,8 @@ namespace ColorGame.Scripts.GameHandlers
 
         private void Start()
         {
-            var player = Instantiate(playerController, playerSpawnPosition, Quaternion.identity);
-            player.OnPlayerPickup += OnPlayerPickup;
-            player.OnPlayerDie += OnPlayerDie;
+            playerController.OnPlayerPickup += OnPlayerPickup;
+            playerController.OnPlayerDie += OnPlayerDie;
         }
         
         private void OnPlayerPickup(GameObject obj)

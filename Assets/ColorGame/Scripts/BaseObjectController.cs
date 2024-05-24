@@ -18,6 +18,7 @@ namespace ColorGame.Scripts
         [SerializeField] protected List<SpriteRenderer> colorDList;
 
         private float _obstacleHeight;
+        //TODO: star should be created here, prob as a list because some obstacles can have more than one
         
         public float ObstacleHeight => GetObstacleHeight();
 
@@ -53,7 +54,7 @@ namespace ColorGame.Scripts
 
         protected void SetupColors()
         {
-            var colorPalette = GameHandler.Instance.CurrentActiveColorPalette;
+            var colorPalette = GameHandler.Instance.ColorsHandler.CurrentActiveColorPalette;
             
             SetupColor(colorAList, colorPalette.colorA);
             SetupColor(colorBList, colorPalette.colorB);

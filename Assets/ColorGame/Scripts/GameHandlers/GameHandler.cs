@@ -1,27 +1,17 @@
-using ColorGame.Scripts.Colors;
 using ColorGame.Scripts.Patterns;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace ColorGame.Scripts.GameHandlers
 {
     public class GameHandler : Singleton<GameHandler>
     {
-        [SerializeField] private ColorPalettesHolder colorPalettesHolder;
+        [SerializeField] private ColorsHandler colorsHandler;
+        [SerializeField] private PlayerCollisionHandler playerCollisionHandler;
+        [SerializeField] private ObjectSpawner objectSpawner;
 
-        public ColorPalette CurrentActiveColorPalette { get; private set; }
-        public Color CurrentActiveColor { get; private set; }
+        public ColorsHandler ColorsHandler => colorsHandler;
+        public PlayerCollisionHandler PlayerCollisionHandler => playerCollisionHandler;
+        public ObjectSpawner ObjectSpawner => objectSpawner;
 
-        protected override void Awake()
-        {
-            base.Awake();
-            
-            //TODO: check color palette from save file
-            var randomNumber = Random.Range(0, colorPalettesHolder.colorPalettes.Count);
-            CurrentActiveColorPalette = colorPalettesHolder.colorPalettes[randomNumber];
-
-            var randomColorIndex = Random.Range(0, CurrentActiveColorPalette.Count);
-            CurrentActiveColor = CurrentActiveColorPalette[randomColorIndex];
-        }
     }
 }
