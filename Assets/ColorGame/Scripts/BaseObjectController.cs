@@ -5,8 +5,10 @@ using UnityEngine;
 
 namespace ColorGame.Scripts
 {
+    [RequireComponent(typeof(BoxCollider2D))]
     public class BaseObjectController : MonoBehaviour
     {
+        [SerializeField, HideInInspector] private BoxCollider2D boxCollider2D;
         [SerializeField] protected bool enableRotation;
         [SerializeField] protected bool invertRotation;
         [SerializeField] protected float rotationDuration;
@@ -14,21 +16,10 @@ namespace ColorGame.Scripts
         [SerializeField] protected List<SpriteRenderer> colorBList;
         [SerializeField] protected List<SpriteRenderer> colorCList;
         [SerializeField] protected List<SpriteRenderer> colorDList;
+
+        private float _obstacleHeight;
         
-        public float ObstacleHeight { get; private set; }
-
-        protected void Awake()
-        {
-            if (ObstacleHeight != 0)
-            {
-                return;
-            }
-
-            var boxCollider2D = GetComponent<BoxCollider2D>();
-            boxCollider2D.enabled = true;
-            ObstacleHeight = boxCollider2D.bounds.size.y;
-            boxCollider2D.enabled = false;
-        }
+        public float ObstacleHeight => GetObstacleHeight();
 
         protected void Start()
         {
@@ -38,6 +29,18 @@ namespace ColorGame.Scripts
             {
                 StartRotating();
             }
+        }
+
+        protected float GetObstacleHeight()
+        {
+            if (_obstacleHeight <= 0) 
+            {
+                boxCollider2D.enabled = true;
+                _obstacleHeight = boxCollider2D.bounds.size.y;
+                boxCollider2D.enabled = false;
+            }
+
+            return _obstacleHeight;
         }
 
         protected void StartRotating()
@@ -58,11 +61,19 @@ namespace ColorGame.Scripts
             SetupColor(colorDList, colorPalette.colorD);
         }
 
-        private void SetupColor(List<SpriteRenderer> colorList, Color color)
+        protected void SetupColor(List<SpriteRenderer> colorList, Color color)
         {
             foreach (var spriteRenderer in colorList)
             {
                 spriteRenderer.color = color;
+            }
+        }
+
+        private void OnValidate()
+        {
+            if (boxCollider2D == null)
+            {
+                boxCollider2D = GetComponent<BoxCollider2D>();
             }
         }
     }

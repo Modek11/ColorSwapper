@@ -123,6 +123,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &275382512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 275382514}
+  - component: {fileID: 275382513}
+  m_Layer: 0
+  m_Name: ObjectSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &275382513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275382512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb176e1c25c5d88469008168e4204934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spaceBetweenObjects: 1.5
+  obstacles:
+  - {fileID: 2449330605479864559, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
+  - {fileID: 2449330605479864559, guid: 536510362f8efc3409a43cacde6391bd, type: 3}
+  - {fileID: 2449330605479864559, guid: 84cc1ad26a0d9424db53743a3a457fcd, type: 3}
+  colorChanger: {fileID: 3976177248883950497, guid: 040fb39bbccb1f649b6e0ffae95bb5ee, type: 3}
+--- !u!4 &275382514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275382512}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +403,6 @@ GameObject:
   - component: {fileID: 702343501}
   - component: {fileID: 702343500}
   - component: {fileID: 702343502}
-  - component: {fileID: 702343503}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -404,24 +453,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 1266958332657609456, guid: 09d563f4ec4b59b4e8e5c81a6cb4a730, type: 3}
   playerSpawnPosition: {x: 0, y: -2.5, z: 0}
---- !u!114 &702343503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 702343499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb176e1c25c5d88469008168e4204934, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spaceBetweenObjects: 1.5
-  obstacles:
-  - {fileID: 2449330605479864559, guid: 768972e770a1d724bb10446acc523bf7, type: 3}
-  - {fileID: 2449330605479864559, guid: 536510362f8efc3409a43cacde6391bd, type: 3}
-  - {fileID: 2449330605479864559, guid: 84cc1ad26a0d9424db53743a3a457fcd, type: 3}
-  colorChanger: {fileID: 3976177248883950497, guid: 040fb39bbccb1f649b6e0ffae95bb5ee, type: 3}
 --- !u!1 &862797106
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +701,7 @@ GameObject:
   - component: {fileID: 1571884615}
   - component: {fileID: 1571884617}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1008,5 +1039,6 @@ SceneRoots:
   - {fileID: 1573301305}
   - {fileID: 519420032}
   - {fileID: 702343501}
+  - {fileID: 275382514}
   - {fileID: 1308765314}
   - {fileID: 1571884616}

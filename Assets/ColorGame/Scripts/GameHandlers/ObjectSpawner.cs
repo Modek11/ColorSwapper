@@ -10,14 +10,13 @@ namespace ColorGame.Scripts.GameHandlers
         [SerializeField] private BaseObjectController colorChanger;
 
         private readonly Vector3 _firstObstaclePosition = new Vector3(0, -1.4f, 0); //half height of first object
-        private Vector3 _lastObstaclePosition;
+        private Vector3 _nextObstacleStartingPosition;
         private float _previousObstacleHeight;
-        private int _firstObstacleIndex = 0;
         
         private void Start()
         {
-            _lastObstaclePosition = _firstObstaclePosition;
-            SpawnObstacle(obstacles[_firstObstacleIndex]);
+            _nextObstacleStartingPosition = _firstObstaclePosition;
+            SpawnObstacle(obstacles[0]);
             
             for (var i = 0; i < 10; i++)
             {
@@ -29,19 +28,19 @@ namespace ColorGame.Scripts.GameHandlers
         private void SpawnObstacle(BaseObjectController objectToSpawn)
         {
             var spawnedObject = Instantiate(objectToSpawn);
-            var spawnedColor = Instantiate(colorChanger);
-
             var halfHeight = spawnedObject.ObstacleHeight / 2;
-            var spawnPoint = new Vector3(0, _lastObstaclePosition.y + halfHeight,0);
-            spawnedObject.transform.position = spawnPoint;
-
+            _nextObstacleStartingPosition.y += halfHeight;
+            spawnedObject.transform.position = _nextObstacleStartingPosition;
+            
+            var spawnedColor = Instantiate(colorChanger);
             var incrementStep = halfHeight + spaceBetweenObjects;
-            spawnPoint += new Vector3(0, incrementStep, 0);
-            spawnedColor.transform.position = spawnPoint;
+            _nextObstacleStartingPosition.y += incrementStep;
+            spawnedColor.transform.position = _nextObstacleStartingPosition;
 
-            _lastObstaclePosition = spawnPoint + new Vector3(0, spaceBetweenObjects, 0);
-
-
+            _nextObstacleStartingPosition.y += spaceBetweenObjects;
+            
+            spawnedObject.transform.SetParent(transform);
+            spawnedColor.transform.SetParent(transform);
         }
     }
 }
