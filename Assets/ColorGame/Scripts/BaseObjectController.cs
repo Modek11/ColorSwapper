@@ -14,6 +14,21 @@ namespace ColorGame.Scripts
         [SerializeField] protected List<SpriteRenderer> colorBList;
         [SerializeField] protected List<SpriteRenderer> colorCList;
         [SerializeField] protected List<SpriteRenderer> colorDList;
+        
+        public float ObstacleHeight { get; private set; }
+
+        protected void Awake()
+        {
+            if (ObstacleHeight != 0)
+            {
+                return;
+            }
+
+            var boxCollider2D = GetComponent<BoxCollider2D>();
+            boxCollider2D.enabled = true;
+            ObstacleHeight = boxCollider2D.bounds.size.y;
+            boxCollider2D.enabled = false;
+        }
 
         protected void Start()
         {

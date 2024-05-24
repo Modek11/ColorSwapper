@@ -3,7 +3,7 @@ namespace ColorGame.Scripts.Colors.Globals
 {
     public static class GameTags
     {
-        public static string Obstacle = "Obstacle";
-        public static string Collectable = "Collectable";
+        public const string Obstacle = "Obstacle";
+        public const string Collectable = "Collectable";
     }
 }
