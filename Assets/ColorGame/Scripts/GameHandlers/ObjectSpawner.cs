@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using ColorGame.Scripts.InteractableObjects;
+using ColorGame.Scripts.InteractableObjects.Collectables;
+using ColorGame.Scripts.InteractableObjects.Obstacles;
 using UnityEngine;
 
 namespace ColorGame.Scripts.GameHandlers
@@ -6,8 +9,12 @@ namespace ColorGame.Scripts.GameHandlers
     public class ObjectSpawner : MonoBehaviour
     {
         [SerializeField] private float spaceBetweenObjects;
+        [SerializeField] private ColorChanger colorChanger;
+        [SerializeField] private StarCollectable starCollectable;
+        
+        [Header("Obstacles")]
+        [SerializeField] private BottomObstacle bottomObstacle;
         [SerializeField] private List<BaseObjectController> obstacles;
-        [SerializeField] private BaseObjectController colorChanger;
 
         private readonly Vector3 _firstObstaclePosition = new Vector3(0, -1.4f, 0); //half height of first object
         private Vector3 _nextObstacleStartingPosition;
