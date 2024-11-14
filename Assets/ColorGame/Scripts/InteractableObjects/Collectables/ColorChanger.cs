@@ -2,13 +2,6 @@
 {
     public class ColorChanger : BaseObjectController
     {
-        private void Awake()
-        {
-            base.SetupColors();
-        }
-        
-        protected override void SetupColors()
-        {
-        }
+        protected override bool ShouldChangeOnGlobalColorChange => false;
     }
 }

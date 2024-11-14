@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace ColorGame.Scripts.Patterns
+namespace ColorGame.Scripts.Globals.Patterns
 {
     /// <summary>
     /// Abstract singleton class for Unity. Updated with possible errors: 

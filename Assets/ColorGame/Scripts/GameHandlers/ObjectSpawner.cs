@@ -22,9 +22,10 @@ namespace ColorGame.Scripts.GameHandlers
         
         private void Start()
         {
+            SpawnBottomObstacle();
+            
             _nextObstacleStartingPosition = _firstObstaclePosition;
             SpawnObstacle(obstacles[0]);
-            SpawnBottomObstacle();
             
             for (var i = 0; i < 10; i++)
             {
@@ -55,7 +56,8 @@ namespace ColorGame.Scripts.GameHandlers
 
         private void SpawnBottomObstacle()
         {
-            Instantiate(bottomObstacle, Vector3.down * 100, Quaternion.identity);
+            var spawnedObject = Instantiate(bottomObstacle, Vector3.down * 100, Quaternion.identity);
+            spawnedObject.transform.SetParent(transform);
         }
     }
 }

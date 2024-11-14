@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceBelowCameraCenter: 6
+  movingCheckInterval: 0.5
 --- !u!212 &233471519127158098
 SpriteRenderer:
   m_ObjectHideFlags: 0

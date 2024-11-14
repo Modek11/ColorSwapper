@@ -472,6 +472,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   colorsHandler: {fileID: 702343503}
   objectSpawner: {fileID: 760820626989432141}
+  playerController: {fileID: 1264345951}
 --- !u!4 &702343501
 Transform:
   m_ObjectHideFlags: 0

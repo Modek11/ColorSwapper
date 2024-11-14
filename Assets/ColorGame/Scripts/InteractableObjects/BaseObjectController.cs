@@ -1,6 +1,10 @@
+using System;
 using System.Collections.Generic;
+using System.Threading;
 using ColorGame.Scripts.Colors;
 using ColorGame.Scripts.GameHandlers;
+using ColorGame.Scripts.Patterns;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -9,6 +13,9 @@ namespace ColorGame.Scripts.InteractableObjects
     [RequireComponent(typeof(BoxCollider2D))]
     public class BaseObjectController : MonoBehaviour
     {
+        private const float DestroyCheckPeriod = 1.5f;
+        private const float DestroyMinDistance = 10f;
+        
         [SerializeField, HideInInspector] private BoxCollider2D boxCollider2D;
         [SerializeField] protected bool enableRotation;
         [SerializeField] protected bool invertRotation;
@@ -19,8 +26,11 @@ namespace ColorGame.Scripts.InteractableObjects
         [SerializeField] protected List<ColorElement> colorElementsDList;
 
         private List<List<ColorElement>> _colorElementsList;
+        private float _obstacleHeight;
+        private CancellationTokenSource _token;
 
-        protected List<List<ColorElement>> ColorElementsList
+        protected virtual bool ShouldChangeOnGlobalColorChange { get; set; } = true;
+        private List<List<ColorElement>> ColorElementsList
         {
             get
             {
@@ -38,12 +48,34 @@ namespace ColorGame.Scripts.InteractableObjects
                 return _colorElementsList;
             }
         }
+        public float ObstacleHeight
+        {
+            get
+            {
+                if (_obstacleHeight <= 0) 
+                {
+                    boxCollider2D.enabled = true;
+                    _obstacleHeight = boxCollider2D.bounds.size.y;
+                    boxCollider2D.enabled = false;
+                }
 
-        private float _obstacleHeight;
+                return _obstacleHeight;
+            }
+        }
+        
         //TODO: star should be created here, prob as a list because some obstacles can have more than one
         
-        public float ObstacleHeight => GetObstacleHeight();
-
+        protected void Awake()
+        {
+            if (ShouldChangeOnGlobalColorChange && GameHandler.Instance != null)
+            {
+                GameHandler.Instance.ColorsHandler.OnGlobalColorChanged += ChangeActiveColliders;
+            }
+            
+            _token = new CancellationTokenSource();
+            CheckForDestroy().Forget();
+        }
+        
         protected virtual void Start()
         {
             SetupColors();
@@ -54,16 +86,15 @@ namespace ColorGame.Scripts.InteractableObjects
             }
         }
 
-        private float GetObstacleHeight()
+        private void OnDestroy()
         {
-            if (_obstacleHeight <= 0) 
+            if (GameHandler.Instance != null)
             {
-                boxCollider2D.enabled = true;
-                _obstacleHeight = boxCollider2D.bounds.size.y;
-                boxCollider2D.enabled = false;
+                GameHandler.Instance.ColorsHandler.OnGlobalColorChanged -= ChangeActiveColliders;
             }
-
-            return _obstacleHeight;
+            
+            _token.Cancel();
+            _token.Dispose();
         }
 
         private void StartRotating()
@@ -74,7 +105,7 @@ namespace ColorGame.Scripts.InteractableObjects
                 .SetLink(gameObject, LinkBehaviour.KillOnDisable);
         }
 
-        protected virtual void SetupColors()
+        private void SetupColors()
         {
             var colorPalette = GameHandler.Instance.ColorsHandler.CurrentActiveColorPalette;
 
@@ -87,6 +118,39 @@ namespace ColorGame.Scripts.InteractableObjects
             }
         }
 
+        private void ChangeActiveColliders(Color activeColor)
+        {
+            foreach (var sameColorObjects in ColorElementsList)
+            {
+                var shouldBeEnabled = Helper.IsDifferentColorRGB(sameColorObjects[0].SpriteRenderer.color, activeColor);
+                foreach (var element in sameColorObjects)
+                {
+                    element.Collider2D.enabled = shouldBeEnabled;
+                }
+            }
+        }
+
+        private async UniTaskVoid CheckForDestroy()
+        {
+            while (true)
+            {
+                CheckDistanceBetweenPlayer();
+                await UniTask.Delay(TimeSpan.FromSeconds(DestroyCheckPeriod), cancellationToken: _token.Token);
+            }
+        }
+
+        private void CheckDistanceBetweenPlayer()
+        {
+            var position = transform.position;
+            var playerPosition = GameHandler.Instance.PlayerController.transform.position;
+            var distance = Vector3.Distance(position, playerPosition);
+
+            if (playerPosition.y > position.y && distance > DestroyMinDistance)
+            {
+                Destroy(gameObject);
+            }
+        }
+        
         protected void OnValidate()
         {
             if (boxCollider2D == null)

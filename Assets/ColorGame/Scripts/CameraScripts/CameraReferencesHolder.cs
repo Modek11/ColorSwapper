@@ -1,5 +1,5 @@
 using Cinemachine;
-using ColorGame.Scripts.Patterns;
+using ColorGame.Scripts.Globals.Patterns;
 using UnityEngine;
 
 namespace ColorGame.Scripts.CameraScripts
