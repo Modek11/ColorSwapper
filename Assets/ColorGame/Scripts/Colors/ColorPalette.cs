@@ -16,19 +16,14 @@ namespace ColorGame.Scripts.Colors
         {
             get
             {
-                switch (index)
+                return index switch
                 {
-                    case 0:
-                        return colorA;
-                    case 1:
-                        return colorB;
-                    case 2:
-                        return colorC;
-                    case 3:
-                        return colorD;
-                    default:
-                        throw new IndexOutOfRangeException("Invalid index");
-                }
+                    0 => colorA,
+                    1 => colorB,
+                    2 => colorC,
+                    3 => colorD,
+                    _ => throw new IndexOutOfRangeException("Invalid index")
+                };
             }
             set
             {
