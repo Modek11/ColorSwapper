@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleParent: {fileID: 8321720447486151096}
-  randomizeRotation: 0
+  randomizeRotation: 1
   enableRotation: 1
   invertRotation: 0
   rotationDuration: 2.5

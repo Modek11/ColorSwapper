@@ -41,7 +41,7 @@ namespace ColorGame.Scripts.InteractableObjects.Obstacles
                 boxCollider2D = GetComponent<BoxCollider2D>();
             }
 
-            if (colorA == null || colorB == null || colorC == null || colorD == null)
+            if (transform.childCount >= 4 && (colorA == null || colorB == null || colorC == null || colorD == null))
             {
                 colorA = transform.GetChild(0).gameObject;
                 colorB = transform.GetChild(1).gameObject;

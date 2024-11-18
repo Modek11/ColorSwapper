@@ -1,4 +1,6 @@
 using ColorGame.Scripts.Colors.Globals;
+using ColorGame.Scripts.InteractableObjects;
+using ColorGame.Scripts.InteractableObjects.Obstacles;
 using ColorGame.Scripts.Player;
 using UnityEngine;
 
@@ -26,8 +28,22 @@ namespace ColorGame.Scripts.GameHandlers
             {
                 //TODO: star implementation
             }
+
+            var obstacleParent = obj.GetComponent<ObstacleParent>();
+            if (obstacleParent != null)
+            {
+                Destroy(obstacleParent.transform.parent.gameObject);
+                return;
+            }
             
-            Destroy(obj);
+            var baseController = obj.GetComponent<BaseObjectController>();
+            if (baseController != null)
+            {
+                Destroy(baseController.gameObject);
+                return;
+            }
+            
+            Debug.LogError($"Collided with object and can't destroy it", obj);
         }
 
         private void OnPlayerDie(GameObject obj)
