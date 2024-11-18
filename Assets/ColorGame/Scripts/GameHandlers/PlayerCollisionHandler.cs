@@ -1,4 +1,4 @@
-using ColorGame.Scripts.Colors.Globals;
+using ColorGame.Scripts.Globals;
 using ColorGame.Scripts.InteractableObjects;
 using ColorGame.Scripts.InteractableObjects.Obstacles;
 using ColorGame.Scripts.Player;
@@ -26,9 +26,14 @@ namespace ColorGame.Scripts.GameHandlers
 
             if (obj.CompareTag(GameTags.Star))
             {
-                //TODO: star implementation
+                GameHandler.Instance.CurrencyHandler.StarCollected();
             }
 
+            TryDestroyCollectedObject(obj);
+        }
+
+        private void TryDestroyCollectedObject(GameObject obj)
+        {
             var obstacleParent = obj.GetComponent<ObstacleParent>();
             if (obstacleParent != null)
             {

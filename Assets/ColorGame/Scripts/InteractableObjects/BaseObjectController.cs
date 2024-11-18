@@ -160,6 +160,11 @@ namespace ColorGame.Scripts.InteractableObjects
                 obstacleParent = GetComponentInChildren<ObstacleParent>();
             }
 
+            FillColorElementsLists();
+        }
+
+        private void FillColorElementsLists()
+        {
             colorElementsAList.Clear();
             colorElementsBList.Clear();
             colorElementsCList.Clear();

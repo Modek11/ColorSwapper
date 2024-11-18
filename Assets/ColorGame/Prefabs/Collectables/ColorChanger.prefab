@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5537303073867823847}
   m_Layer: 0
   m_Name: ColorElement
-  m_TagString: Obstacle
+  m_TagString: ColorChanger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   obstacleParent: {fileID: 6163727179494229778}
   randomizeRotation: 0
   enableRotation: 0
-  invertRotation: 0
+  invertRotationRandomly: 0
   rotationDuration: 0
   colorElementsAList:
   - {fileID: 8005112578774823996}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 66282960681791256}
   m_Layer: 0
   m_Name: ColorA
-  m_TagString: Untagged
+  m_TagString: ColorChanger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 1562951421281061847}
   m_Layer: 0
   m_Name: ColorElement
-  m_TagString: Obstacle
+  m_TagString: ColorChanger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 5201378674663558612}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Obstacle
+  m_TagString: ColorChanger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 3434277488796760550}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Obstacle
+  m_TagString: ColorChanger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -499,7 +499,7 @@ GameObject:
   - component: {fileID: 2103580168989072172}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Obstacle
+  m_TagString: ColorChanger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 8005112578774823996}
   m_Layer: 0
   m_Name: ColorElement
-  m_TagString: Obstacle
+  m_TagString: ColorChanger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -629,7 +629,7 @@ GameObject:
   - component: {fileID: 5646756819195495092}
   m_Layer: 0
   m_Name: ColorC
-  m_TagString: Untagged
+  m_TagString: ColorChanger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 1290467938494066727}
   m_Layer: 0
   m_Name: ColorElement
-  m_TagString: Obstacle
+  m_TagString: ColorChanger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -708,7 +708,7 @@ GameObject:
   - component: {fileID: 5189779827125694805}
   m_Layer: 0
   m_Name: ColorD
-  m_TagString: Untagged
+  m_TagString: ColorChanger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -740,7 +740,7 @@ GameObject:
   - component: {fileID: 5489511249509150361}
   m_Layer: 0
   m_Name: ColorB
-  m_TagString: Untagged
+  m_TagString: ColorChanger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -773,7 +773,7 @@ GameObject:
   - component: {fileID: 3427590141149747838}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Obstacle
+  m_TagString: ColorChanger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1,6 +1,6 @@
 using System;
-using ColorGame.Scripts.Colors.Globals;
 using ColorGame.Scripts.GameHandlers;
+using ColorGame.Scripts.Globals;
 using UnityEngine;
 
 namespace ColorGame.Scripts.Player

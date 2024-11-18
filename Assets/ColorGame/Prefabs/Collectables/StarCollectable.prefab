@@ -48,7 +48,7 @@ MonoBehaviour:
   obstacleParent: {fileID: 458079913235325413}
   randomizeRotation: 0
   enableRotation: 0
-  invertRotation: 0
+  invertRotationRandomly: 0
   rotationDuration: 0
   colorElementsAList: []
   colorElementsBList: []
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 458079913235325413}
   m_Layer: 0
   m_Name: Parent
-  m_TagString: ColorChanger
+  m_TagString: Star
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +83,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8816503284872322955}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 1313914764550501436}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Obstacle
+  m_TagString: Star
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

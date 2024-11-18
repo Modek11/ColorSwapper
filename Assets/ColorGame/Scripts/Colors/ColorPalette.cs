@@ -46,6 +46,7 @@ namespace ColorGame.Scripts.Colors
                 }
             }
         }
+        
         public int Count => 4;
     }
 }

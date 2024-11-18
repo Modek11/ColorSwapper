@@ -1,5 +1,5 @@
 
-namespace ColorGame.Scripts.Colors.Globals
+namespace ColorGame.Scripts.Globals
 {
     public static class GameTags
     {

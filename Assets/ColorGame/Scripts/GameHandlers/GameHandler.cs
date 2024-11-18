@@ -9,9 +9,11 @@ namespace ColorGame.Scripts.GameHandlers
         [SerializeField] private ColorsHandler colorsHandler;
         [SerializeField] private ObjectSpawner objectSpawner;
         [SerializeField] private PlayerController playerController;
+        [SerializeField] private CurrencyHandler currencyHandler;
 
         public ColorsHandler ColorsHandler => colorsHandler;
         public ObjectSpawner ObjectSpawner => objectSpawner;
         public PlayerController PlayerController => playerController;
+        public CurrencyHandler CurrencyHandler => currencyHandler;
     }
 }
