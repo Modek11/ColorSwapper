@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using ColorGame.Scripts.Colors;
 using ColorGame.Scripts.GameHandlers;
+using ColorGame.Scripts.InteractableObjects.Obstacles;
 using ColorGame.Scripts.Patterns;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -10,26 +11,26 @@ using UnityEngine;
 
 namespace ColorGame.Scripts.InteractableObjects
 {
-    [RequireComponent(typeof(BoxCollider2D))]
     public class BaseObjectController : MonoBehaviour
     {
         private const float DestroyCheckPeriod = 1.5f;
         private const float DestroyMinDistance = 10f;
         
-        [SerializeField, HideInInspector] private BoxCollider2D boxCollider2D;
+        [SerializeField] private ObstacleParent obstacleParent;
+        [SerializeField] protected bool randomizeRotation;
         [SerializeField] protected bool enableRotation;
         [SerializeField] protected bool invertRotation;
         [SerializeField] protected float rotationDuration;
-        [SerializeField] protected List<ColorElement> colorElementsAList;
-        [SerializeField] protected List<ColorElement> colorElementsBList;
-        [SerializeField] protected List<ColorElement> colorElementsCList;
-        [SerializeField] protected List<ColorElement> colorElementsDList;
+        
+        [SerializeField, HideInInspector] protected List<ColorElement> colorElementsAList = new();
+        [SerializeField, HideInInspector] protected List<ColorElement> colorElementsBList = new();
+        [SerializeField, HideInInspector] protected List<ColorElement> colorElementsCList = new();
+        [SerializeField, HideInInspector] protected List<ColorElement> colorElementsDList = new();
 
         private List<List<ColorElement>> _colorElementsList;
-        private float _obstacleHeight;
         private CancellationTokenSource _token;
 
-        protected virtual bool ShouldChangeOnGlobalColorChange { get; set; } = true;
+        protected virtual bool ShouldChangeOnGlobalColorChange { get; } = true;
         private List<List<ColorElement>> ColorElementsList
         {
             get
@@ -48,20 +49,8 @@ namespace ColorGame.Scripts.InteractableObjects
                 return _colorElementsList;
             }
         }
-        public float ObstacleHeight
-        {
-            get
-            {
-                if (_obstacleHeight <= 0) 
-                {
-                    boxCollider2D.enabled = true;
-                    _obstacleHeight = boxCollider2D.bounds.size.y;
-                    boxCollider2D.enabled = false;
-                }
 
-                return _obstacleHeight;
-            }
-        }
+        public float ObstacleHeight => obstacleParent.ObstacleHeight;
         
         //TODO: star should be created here, prob as a list because some obstacles can have more than one
         
@@ -76,9 +65,14 @@ namespace ColorGame.Scripts.InteractableObjects
             CheckForDestroy().Forget();
         }
         
-        protected virtual void Start()
+        protected void Start()
         {
             SetupColors();
+            
+            if (randomizeRotation)
+            {
+                RandomizeRotation();
+            }
 
             if (enableRotation)
             {
@@ -99,10 +93,15 @@ namespace ColorGame.Scripts.InteractableObjects
 
         private void StartRotating()
         {
-            var rotation = new Vector3(0, 0, 180);
+            var rotation = new Vector3(0, 0, obstacleParent.transform.localEulerAngles.z + 180);
             rotation = invertRotation ? rotation * -1 : rotation;
-            transform.DORotate(rotation, rotationDuration).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear)
-                .SetLink(gameObject, LinkBehaviour.KillOnDisable);
+            obstacleParent.transform.DORotate(rotation, rotationDuration).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear)
+                .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
+        }
+
+        private void RandomizeRotation()
+        {
+            obstacleParent.transform.localEulerAngles = Vector3.forward * UnityEngine.Random.Range(0, 360);
         }
 
         private void SetupColors()
@@ -150,12 +149,37 @@ namespace ColorGame.Scripts.InteractableObjects
                 Destroy(gameObject);
             }
         }
-        
-        protected void OnValidate()
+
+        protected virtual void OnValidate()
         {
-            if (boxCollider2D == null)
+            if (obstacleParent == null)
             {
-                boxCollider2D = GetComponent<BoxCollider2D>();
+                obstacleParent = GetComponentInChildren<ObstacleParent>();
+            }
+
+            colorElementsAList.Clear();
+            colorElementsBList.Clear();
+            colorElementsCList.Clear();
+            colorElementsDList.Clear();
+
+            foreach (var element in obstacleParent.ColorA.GetComponentsInChildren<ColorElement>())
+            {
+                colorElementsAList.Add(element);
+            }
+
+            foreach (var element in obstacleParent.ColorB.GetComponentsInChildren<ColorElement>())
+            {
+                colorElementsBList.Add(element);
+            }
+
+            foreach (var element in obstacleParent.ColorC.GetComponentsInChildren<ColorElement>())
+            {
+                colorElementsCList.Add(element);
+            }
+
+            foreach (var element in obstacleParent.ColorD.GetComponentsInChildren<ColorElement>())
+            {
+                colorElementsDList.Add(element);
             }
         }
     }

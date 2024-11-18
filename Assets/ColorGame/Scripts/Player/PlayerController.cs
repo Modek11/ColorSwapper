@@ -16,9 +16,14 @@ namespace ColorGame.Scripts.Player
         
         private void Awake()
         {
-            GameHandler.Instance.ColorsHandler.OnGlobalColorChanged += color => playerSpriteRenderer.color = color;
+            GameHandler.Instance.ColorsHandler.OnGlobalColorChanged += OnGlobalColorChanged;
             InputSystemController.InitializeInputSystem();
             InputSystemController.OnJumpPerformed += PlayerJump;
+        }
+
+        private void OnGlobalColorChanged(Color color)
+        {
+            playerSpriteRenderer.color = color;
         }
 
         private void PlayerJump()
@@ -41,6 +46,14 @@ namespace ColorGame.Scripts.Player
             if (other.gameObject.CompareTag(GameTags.Obstacle))
             {
                 OnPlayerDie?.Invoke(other.gameObject);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (GameHandler.Instance != null)
+            {
+                GameHandler.Instance.ColorsHandler.OnGlobalColorChanged -= OnGlobalColorChanged;
             }
         }
     }
