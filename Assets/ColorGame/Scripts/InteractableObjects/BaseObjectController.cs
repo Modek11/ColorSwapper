@@ -15,11 +15,13 @@ namespace ColorGame.Scripts.InteractableObjects
     {
         private const float DestroyCheckPeriod = 1.5f;
         private const float DestroyMinDistance = 10f;
+        private const float RotateRight = -360;
+        private const float RotateLeft = 360;
         
         [SerializeField] private ObstacleParent obstacleParent;
         [SerializeField] protected bool randomizeRotation;
         [SerializeField] protected bool enableRotation;
-        [SerializeField] protected bool invertRotation;
+        [SerializeField] protected bool invertRotationRandomly;
         [SerializeField] protected float rotationDuration;
         
         [SerializeField, HideInInspector] protected List<ColorElement> colorElementsAList = new();
@@ -93,15 +95,16 @@ namespace ColorGame.Scripts.InteractableObjects
 
         private void StartRotating()
         {
-            var rotation = new Vector3(0, 0, obstacleParent.transform.localEulerAngles.z + 180);
-            rotation = invertRotation ? rotation * -1 : rotation;
-            obstacleParent.transform.DORotate(rotation, rotationDuration).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear)
-                .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
+            var rotationEuler = invertRotationRandomly && UnityEngine.Random.Range(0f, 1f) > 0.5f ? RotateLeft : RotateRight;
+            var rotation = new Vector3(0, 0, rotationEuler);
+            obstacleParent.transform.DOLocalRotate(rotation, rotationDuration, RotateMode.LocalAxisAdd).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear)
+                .SetLink(obstacleParent.gameObject, LinkBehaviour.KillOnDestroy);
         }
 
         private void RandomizeRotation()
         {
-            obstacleParent.transform.localEulerAngles = Vector3.forward * UnityEngine.Random.Range(0, 360);
+            var random = UnityEngine.Random.Range(0, 360);
+            obstacleParent.transform.localEulerAngles = new Vector3(0, 0, random);
         }
 
         private void SetupColors()

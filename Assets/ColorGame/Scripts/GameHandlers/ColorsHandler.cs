@@ -33,7 +33,6 @@ namespace ColorGame.Scripts.GameHandlers
         public void ChangeCurrentActiveColor()
         {
             var randomIndex = Random.Range(0, CurrentActiveColorPalette.Count);
-            Debug.Log($"{randomIndex} ||| {_colorIndex}");
             _colorIndex = randomIndex != _colorIndex ? randomIndex :
                 (_colorIndex + 1) % CurrentActiveColorPalette.Count;
             

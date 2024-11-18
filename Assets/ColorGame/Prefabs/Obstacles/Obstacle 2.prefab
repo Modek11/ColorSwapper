@@ -289,8 +289,8 @@ MonoBehaviour:
   obstacleParent: {fileID: 8321720447486151096}
   randomizeRotation: 1
   enableRotation: 1
-  invertRotation: 0
-  rotationDuration: 2.5
+  invertRotationRandomly: 1
+  rotationDuration: 5
   colorElementsAList:
   - {fileID: 6969490873827431566}
   colorElementsBList:
