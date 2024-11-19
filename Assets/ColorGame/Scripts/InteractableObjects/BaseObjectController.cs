@@ -19,15 +19,15 @@ namespace ColorGame.Scripts.InteractableObjects
         private const float RotateLeft = 360;
         
         [SerializeField] private ObstacleParent obstacleParent;
-        [SerializeField] protected bool randomizeRotation;
-        [SerializeField] protected bool enableRotation;
-        [SerializeField] protected bool invertRotationRandomly;
-        [SerializeField] protected float rotationDuration;
+        [SerializeField] private bool randomizeRotation;
+        [SerializeField] private bool enableRotation;
+        [SerializeField] private bool invertRotationRandomly;
+        [SerializeField] private float rotationDuration;
         
-        [SerializeField, HideInInspector] protected List<ColorElement> colorElementsAList = new();
-        [SerializeField, HideInInspector] protected List<ColorElement> colorElementsBList = new();
-        [SerializeField, HideInInspector] protected List<ColorElement> colorElementsCList = new();
-        [SerializeField, HideInInspector] protected List<ColorElement> colorElementsDList = new();
+        [SerializeField, HideInInspector] private List<ColorElement> colorElementsAList = new();
+        [SerializeField, HideInInspector] private List<ColorElement> colorElementsBList = new();
+        [SerializeField, HideInInspector] private List<ColorElement> colorElementsCList = new();
+        [SerializeField, HideInInspector] private List<ColorElement> colorElementsDList = new();
 
         private List<List<ColorElement>> _colorElementsList;
         private CancellationTokenSource _token;
