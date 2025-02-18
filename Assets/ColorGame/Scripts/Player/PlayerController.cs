@@ -7,9 +7,14 @@ namespace ColorGame.Scripts.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private Rigidbody2D rb;
+        private const float MAX_SWIPE_LENGTH = 1000f;
+        private const float MIN_SWIPE_LENGTH = 10f;
+        
+        [SerializeField] private Rigidbody2D playerRigidbody;
+        [SerializeField] private SwipeDetector _swipeDetector;
         [SerializeField] private SpriteRenderer playerSpriteRenderer;
         [SerializeField] private float jumpStrength;
+        [SerializeField] private Vector2 jumpForceMultiplier;
         
         public event Action<GameObject> OnPlayerPickup;
         public event Action<GameObject> OnPlayerDie;
@@ -17,20 +22,29 @@ namespace ColorGame.Scripts.Player
         private void Awake()
         {
             GameHandler.Instance.ColorsHandler.OnGlobalColorChanged += OnGlobalColorChanged;
-            InputSystemController.InitializeInputSystem();
-            InputSystemController.OnJumpPerformed += PlayerJump;
+            _swipeDetector.OnSwipeUpdated += OnSwipeUpdated;
         }
 
         private void OnGlobalColorChanged(Color color)
         {
             playerSpriteRenderer.color = color;
         }
-
-        private void PlayerJump()
+        
+        private void OnSwipeUpdated(SwipeData swipeData)
         {
-            var forceVector = new Vector2(0, jumpStrength);
-            rb.velocity = Vector2.zero;
-            rb.AddForce(forceVector, ForceMode2D.Impulse);
+            if (swipeData.SwipeStrength < MIN_SWIPE_LENGTH)
+            {
+                return;
+            }
+
+            var strength = swipeData.SwipeStrength > MAX_SWIPE_LENGTH
+                ? jumpStrength
+                : jumpStrength * (swipeData.SwipeStrength / MAX_SWIPE_LENGTH);
+
+            var forceVector = jumpForceMultiplier * swipeData.NormalizedDirection * strength;
+            
+            playerRigidbody.velocity = Vector2.zero;
+            playerRigidbody.AddForce(forceVector, ForceMode2D.Impulse);
         }
         
         private void OnTriggerEnter2D(Collider2D other)

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1027980682017701019}
   - component: {fileID: 1266958332657609456}
   - component: {fileID: 5545185865340224070}
+  - component: {fileID: 4222927992676351453}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -97,7 +98,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!114 &1266958332657609456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,9 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a93c39c7762f564c8b992369cdcc84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1027980682017701019}
+  playerRigidbody: {fileID: 1027980682017701019}
+  _swipeDetector: {fileID: 4222927992676351453}
   playerSpriteRenderer: {fileID: 7622923080260648157}
   jumpStrength: 6.5
+  jumpForceMultiplier: {x: 1, y: 1.5}
 --- !u!114 &5545185865340224070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +130,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 1266958332657609456}
   playerSpawnPosition: {x: 0, y: -2.5, z: 0}
+--- !u!114 &4222927992676351453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3751143665494436783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d64130449ce75084f90b942650189e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4312445633721389848
 GameObject:
   m_ObjectHideFlags: 0

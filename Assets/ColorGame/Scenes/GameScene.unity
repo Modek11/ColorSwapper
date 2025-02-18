@@ -1360,6 +1360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 1264345951}
+  _offset: 0.001
 --- !u!1 &2114609672
 GameObject:
   m_ObjectHideFlags: 0
