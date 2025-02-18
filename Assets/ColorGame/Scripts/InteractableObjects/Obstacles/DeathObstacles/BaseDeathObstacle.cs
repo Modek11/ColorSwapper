@@ -5,16 +5,16 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
-namespace ColorGame.Scripts.InteractableObjects.Obstacles
+namespace ColorGame.Scripts.InteractableObjects.Obstacles.DeathObstacles
 {
-    public class BottomObstacle : MonoBehaviour
+    public abstract class BaseDeathObstacle : MonoBehaviour
     {
-        [SerializeField] private float distanceBelowCameraCenter;
-        [SerializeField] private float movingCheckInterval;
+        private const float MOVE_CHECKING_INTERVAL = .3f;
 
-        private Transform _cameraTransform;
         private CancellationTokenSource _token;
+        private Transform _cameraTransform;
 
+        protected abstract float YOffset { get; }
         
         private void Awake()
         {
@@ -35,7 +35,7 @@ namespace ColorGame.Scripts.InteractableObjects.Obstacles
             while (true)
             {
                 TryMoveObstacle();
-                await UniTask.Delay(TimeSpan.FromSeconds(movingCheckInterval), cancellationToken: _token.Token);
+                await UniTask.Delay(TimeSpan.FromSeconds(MOVE_CHECKING_INTERVAL), cancellationToken: _token.Token);
             }
         }
 
@@ -43,7 +43,7 @@ namespace ColorGame.Scripts.InteractableObjects.Obstacles
         {
             if (_cameraTransform.position.y > transform.position.y)
             {
-                transform.DOMoveY(_cameraTransform.position.y - distanceBelowCameraCenter, 0);
+                transform.DOMoveY(_cameraTransform.position.y + YOffset, 0);
             }
         }
     }

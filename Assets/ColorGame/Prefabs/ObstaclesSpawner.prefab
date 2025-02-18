@@ -47,8 +47,8 @@ MonoBehaviour:
   spaceBetweenObjects: 1.5
   colorChanger: {fileID: -5967041093903131497, guid: 47986a5b52bc04b4cabdee6d333afc9c, type: 3}
   starCollectable: {fileID: -5146635922645385191, guid: 95c339275ef9feb42b24322d566a078d, type: 3}
-  tryInvertObstacleRotation: 1
-  bottomObstacle: {fileID: 1709220767952244964, guid: 422bf182d0e1a8b46845914473307b65, type: 3}
+  bottomDeathObstacle: {fileID: 7492719693888896963, guid: 422bf182d0e1a8b46845914473307b65, type: 3}
+  sideDeathObstacle: {fileID: 2571923346195229603, guid: 9cef5f8480b4db546a87bcd7426a9173, type: 3}
   obstacles:
   - {fileID: 4883720817642272419, guid: 2dc90bb4202d8d841b605067403da3c0, type: 3}
   - {fileID: 7064796973489416758, guid: 6a27a49e760c56c4da452ad3e733116c, type: 3}

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using ColorGame.Scripts.InteractableObjects;
 using ColorGame.Scripts.InteractableObjects.Collectables;
 using ColorGame.Scripts.InteractableObjects.Obstacles;
+using ColorGame.Scripts.InteractableObjects.Obstacles.DeathObstacles;
 using UnityEngine;
 
 namespace ColorGame.Scripts.GameHandlers
@@ -13,7 +14,8 @@ namespace ColorGame.Scripts.GameHandlers
         [SerializeField] private StarCollectable starCollectable;
         
         [Header("Obstacles")]
-        [SerializeField] private BottomObstacle bottomObstacle;
+        [SerializeField] private BottomDeathObstacle bottomDeathObstacle;
+        [SerializeField] private SideDeathObstacle sideDeathObstacle;
         [SerializeField] private List<BaseObjectController> obstacles;
 
         private readonly Vector3 _firstObstaclePosition = new Vector3(0, -1.4f, 0); //half height of first object
@@ -22,7 +24,7 @@ namespace ColorGame.Scripts.GameHandlers
         
         private void Start()
         {
-            SpawnBottomObstacle();
+            SpawnDeathObstacles();
             
             _nextObstacleStartingPosition = _firstObstaclePosition;
             SpawnObstacle(obstacles[0]);
@@ -54,10 +56,21 @@ namespace ColorGame.Scripts.GameHandlers
             spawnedColor.transform.SetParent(transform);
         }
 
-        private void SpawnBottomObstacle()
+        private void SpawnDeathObstacles()
         {
-            var spawnedObject = Instantiate(bottomObstacle, Vector3.down * 100, Quaternion.identity);
-            spawnedObject.transform.SetParent(transform);
+            var bottom = Instantiate(bottomDeathObstacle, transform, true);
+            bottom.transform.position = GetDeathObstaclePosition();
+
+            var left = Instantiate(sideDeathObstacle, transform, true);
+            left.transform.position = GetDeathObstaclePosition(left.SideOffset);
+
+            var right = Instantiate(sideDeathObstacle, transform, true);
+            right.transform.position = GetDeathObstaclePosition(-left.SideOffset);
+        }
+
+        private Vector3 GetDeathObstaclePosition(float sideOffset = 0f)
+        {
+            return new Vector3(sideOffset, -100, 0);
         }
     }
 }

@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4769376125889646264}
   - component: {fileID: 1334501225049722745}
-  - component: {fileID: 1709220767952244964}
+  - component: {fileID: 7492719693888896963}
   - component: {fileID: 233471519127158098}
   m_Layer: 0
-  m_Name: BottomObstacle
+  m_Name: BottomDeathObstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1709220767952244964
+--- !u!114 &7492719693888896963
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,11 +88,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5108395344231028942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cb5a03d1640cbf4bbd72faa366c0a16, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d3d1da7ba3b4dddab76a1994332dea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceBelowCameraCenter: 6
-  movingCheckInterval: 0.5
 --- !u!212 &233471519127158098
 SpriteRenderer:
   m_ObjectHideFlags: 0
