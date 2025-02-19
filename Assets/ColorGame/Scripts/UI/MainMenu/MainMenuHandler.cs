@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using ColorGame.Scripts.GameHandlers;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace ColorGame.Scripts.UI.MainMenu
@@ -11,13 +13,20 @@ namespace ColorGame.Scripts.UI.MainMenu
         [SerializeField] private Button _gameColorsButton;
 
         [SerializeField] private DynamicShopPanel _dynamicShopPanel;
+        [SerializeField] private GameHandler _gameHandler;
 
         private void OnEnable()
         {
-            _playButton.onClick.AddListener(() => Debug.Log($"Implement changing scene to gameplay!"));
+            _playButton.onClick.AddListener(OnPlayButtonClicked);
             _avatarButton.onClick.AddListener(() => OpenDynamicPanel(PanelType.Avatar));
             _trailButton.onClick.AddListener(() => OpenDynamicPanel(PanelType.Trails));
             _gameColorsButton.onClick.AddListener(() => OpenDynamicPanel(PanelType.ColorPalette));
+        }
+
+        private void OnPlayButtonClicked()
+        {
+            Destroy(_gameHandler.gameObject);
+            SceneManager.LoadScene(1);
         }
 
         private void OpenDynamicPanel(PanelType panelType)

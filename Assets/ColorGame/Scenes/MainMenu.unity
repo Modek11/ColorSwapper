@@ -1307,6 +1307,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c8bcff09a498bd49a42b5bb7b2432ba, type: 3}
+--- !u!114 &1946445850 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1574901493873761577, guid: 3c8bcff09a498bd49a42b5bb7b2432ba, type: 3}
+  m_PrefabInstance: {fileID: 1946445849}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67afc45da1b93be40baccde3fa41e145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &132496362262795240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3613,6 +3624,7 @@ MonoBehaviour:
   _trailButton: {fileID: 4947408555750079963}
   _gameColorsButton: {fileID: 6910122160212441849}
   _dynamicShopPanel: {fileID: 1242715465487702048}
+  _gameHandler: {fileID: 1946445850}
 --- !u!222 &4947408555616482512
 CanvasRenderer:
   m_ObjectHideFlags: 0
