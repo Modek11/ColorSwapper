@@ -33,7 +33,7 @@ namespace ColorGame.Scripts.InteractableObjects
         private CancellationTokenSource _token;
 
         protected virtual bool ShouldChangeOnGlobalColorChange { get; } = true;
-        private List<List<ColorElement>> ColorElementsList
+        protected List<List<ColorElement>> ColorElementsList
         {
             get
             {
@@ -107,7 +107,7 @@ namespace ColorGame.Scripts.InteractableObjects
             obstacleParent.transform.localEulerAngles = new Vector3(0, 0, random);
         }
 
-        private void SetupColors()
+        public void SetupColors()
         {
             var colorPalette = GameHandler.Instance.ColorsHandler.CurrentActiveColorPalette;
 
@@ -132,7 +132,7 @@ namespace ColorGame.Scripts.InteractableObjects
             }
         }
 
-        private async UniTaskVoid CheckForDestroy()
+        protected virtual async UniTaskVoid CheckForDestroy()
         {
             while (true)
             {
