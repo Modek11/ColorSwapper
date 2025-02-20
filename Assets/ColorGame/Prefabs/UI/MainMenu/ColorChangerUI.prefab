@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.93725497, g: 0.2784314, b: 0.43529415, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6711501268300507262}
-  - component: {fileID: 2540183220310203991}
+  - component: {fileID: 4566089191966460336}
   m_Layer: 0
   m_Name: ColorElement
   m_TagString: ColorChanger
@@ -161,7 +161,7 @@ Transform:
   - {fileID: 7668469085886041425}
   m_Father: {fileID: 5529338785692927347}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2540183220310203991
+--- !u!114 &4566089191966460336
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,11 +170,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1505958252934728399}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efd40568dd9437a4e872d754c2f1c2d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b7ee3d3adb24df8b413391cc4ba3da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   col2D: {fileID: 0}
   spriteRenderer: {fileID: 322101985706780607}
+  targetImage: {fileID: 7677845482222881133}
 --- !u!1 &1517970007064009816
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +249,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8142026425182384880}
-  - component: {fileID: 6755396781026384460}
+  - component: {fileID: 1848590865968849044}
   m_Layer: 0
   m_Name: ColorElement
   m_TagString: ColorChanger
@@ -272,7 +273,7 @@ Transform:
   - {fileID: 2564426519038373565}
   m_Father: {fileID: 34336861285369074}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &6755396781026384460
+--- !u!114 &1848590865968849044
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -281,11 +282,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3435200030114894736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efd40568dd9437a4e872d754c2f1c2d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b7ee3d3adb24df8b413391cc4ba3da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   col2D: {fileID: 0}
   spriteRenderer: {fileID: 5865445180399382855}
+  targetImage: {fileID: 9186471289052756116}
 --- !u!1 &3826283937502746137
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.8196079, b: 0.40000004, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -487,7 +489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 173632715178358630}
-  - component: {fileID: 40294467697954956}
+  - component: {fileID: 7063013879233756298}
   m_Layer: 0
   m_Name: ColorElement
   m_TagString: ColorChanger
@@ -511,7 +513,7 @@ Transform:
   - {fileID: 2999802782580053528}
   m_Father: {fileID: 146959885965502687}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
---- !u!114 &40294467697954956
+--- !u!114 &7063013879233756298
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -520,11 +522,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7868373257150305287}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efd40568dd9437a4e872d754c2f1c2d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b7ee3d3adb24df8b413391cc4ba3da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   col2D: {fileID: 0}
   spriteRenderer: {fileID: 7189551806433832981}
+  targetImage: {fileID: 335202647375265232}
 --- !u!1 &8029973577642548945
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,13 +579,13 @@ MonoBehaviour:
   invertRotationRandomly: 0
   rotationDuration: 0
   colorElementsAList:
-  - {fileID: 2540183220310203991}
+  - {fileID: 4566089191966460336}
   colorElementsBList:
-  - {fileID: 6755396781026384460}
+  - {fileID: 1848590865968849044}
   colorElementsCList:
-  - {fileID: 40294467697954956}
+  - {fileID: 7063013879233756298}
   colorElementsDList:
-  - {fileID: 6478406475197407676}
+  - {fileID: 468189870869382703}
 --- !u!1 &8259059575793966023
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,7 +697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.023529414, g: 0.83921576, b: 0.627451, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -822,7 +825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14901961, g: 0.32941177, b: 0.48627454, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -848,7 +851,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2697911082784606082}
-  - component: {fileID: 6478406475197407676}
+  - component: {fileID: 468189870869382703}
   m_Layer: 0
   m_Name: ColorElement
   m_TagString: ColorChanger
@@ -872,7 +875,7 @@ Transform:
   - {fileID: 5716800198202376710}
   m_Father: {fileID: 311479641867918142}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
---- !u!114 &6478406475197407676
+--- !u!114 &468189870869382703
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -881,11 +884,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 9060150713030750875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efd40568dd9437a4e872d754c2f1c2d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b7ee3d3adb24df8b413391cc4ba3da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   col2D: {fileID: 0}
   spriteRenderer: {fileID: 7205290436880290701}
+  targetImage: {fileID: 7420624313993529165}
 --- !u!1 &9216972841429017648
 GameObject:
   m_ObjectHideFlags: 0

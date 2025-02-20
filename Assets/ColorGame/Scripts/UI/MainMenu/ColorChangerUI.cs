@@ -7,19 +7,18 @@ namespace ColorGame.Scripts.UI.MainMenu
 {
     public class ColorChangerUI : ColorChanger
     {
-        private void SetupUIElements(ColorPalette colorPalette)
+        public void SetupUIElements(ColorPalette colorPalette)
         {
             var targetScale = transform.GetComponentInParent<RectTransform>().rect.width;
             transform.localScale = Vector3.one * targetScale;
 
-            foreach (var list in ColorElementsList)
+            for (var i = 0; i < ColorElementsList.Count; i++)
             {
-                foreach (var element in list)
+                foreach (var element in ColorElementsList[i])
                 {
                     if (element is ColorElementUI elementUi)
                     {
-                        elementUi.TargetImage.sprite = elementUi.SpriteRenderer.sprite;
-                        elementUi.TargetImage.color = elementUi.SpriteRenderer.color;
+                        elementUi.TargetImage.color = colorPalette[i];
                     }
                 }
             }
@@ -27,6 +26,7 @@ namespace ColorGame.Scripts.UI.MainMenu
 
         protected override async UniTaskVoid CheckForDestroy()
         {
+            await UniTask.Yield();
         }
     }
 }

@@ -107,7 +107,7 @@ namespace ColorGame.Scripts.InteractableObjects
             obstacleParent.transform.localEulerAngles = new Vector3(0, 0, random);
         }
 
-        public void SetupColors()
+        private void SetupColors()
         {
             var colorPalette = GameHandler.Instance.ColorsHandler.CurrentActiveColorPalette;
 

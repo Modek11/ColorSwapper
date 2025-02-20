@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using ColorGame.Scripts.Colors;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,6 +15,7 @@ namespace ColorGame.Scripts.GameHandlers
 
         public ColorPalette CurrentActiveColorPalette { get; private set; }
         public Color CurrentActiveColor { get; private set; }
+        public List<ColorPalette> AvailableColorPalettes => colorPalettesHolder.colorPalettes;
         
         public event Action<Color> OnGlobalColorChanged;
 
@@ -26,8 +28,8 @@ namespace ColorGame.Scripts.GameHandlers
 
         private void ChangeCurrentActiveColorPalette()
         {
-            var randomIndex = Random.Range(0, colorPalettesHolder.colorPalettes.Count);
-            CurrentActiveColorPalette = colorPalettesHolder.colorPalettes[randomIndex];
+            var randomIndex = Random.Range(0, AvailableColorPalettes.Count);
+            CurrentActiveColorPalette = AvailableColorPalettes[randomIndex];
         }
 
         public void ChangeCurrentActiveColor()
