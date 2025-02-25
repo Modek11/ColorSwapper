@@ -7,6 +7,8 @@ namespace ColorGame.Scripts.CameraScripts
     {
         [SerializeField] private PlayerController playerController;
         [SerializeField] private float offset;
+        
+        //TODO [mt]: set offset to "0.001" when cleanup
 
         private Transform _playerTransform;
         private Vector3 _targetPosition;

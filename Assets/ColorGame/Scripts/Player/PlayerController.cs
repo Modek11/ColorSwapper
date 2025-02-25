@@ -13,6 +13,7 @@ namespace ColorGame.Scripts.Player
         [SerializeField] private Rigidbody2D playerRigidbody;
         [SerializeField] private SwipeDetector _swipeDetector;
         [SerializeField] private SpriteRenderer playerSpriteRenderer;
+        [SerializeField] private TrailRenderer playerTrailRenderer;
         [SerializeField] private float jumpStrength;
         [SerializeField] private Vector2 jumpForceMultiplier;
         
@@ -24,11 +25,19 @@ namespace ColorGame.Scripts.Player
             GameHandler.Instance.SetPlayerController(this);
             GameHandler.Instance.GameVisualsHandler.OnGlobalColorChanged += OnGlobalGameVisualChanged;
             _swipeDetector.OnSwipeUpdated += OnSwipeUpdated;
+            SetupPlayerVisuals();
         }
 
         private void OnGlobalGameVisualChanged(Color color)
         {
             playerSpriteRenderer.color = color;
+        }
+
+        private void SetupPlayerVisuals()
+        {
+            playerSpriteRenderer.sprite = GameHandler.Instance.PlayerStorageController.GetAvatar();
+            playerTrailRenderer.startColor = GameHandler.Instance.PlayerStorageController.GetStartTrailColor();
+            playerTrailRenderer.endColor = GameHandler.Instance.PlayerStorageController.GetEndTrailColor();
         }
         
         private void OnSwipeUpdated(SwipeData swipeData)

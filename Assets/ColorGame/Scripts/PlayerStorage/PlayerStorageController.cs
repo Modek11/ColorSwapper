@@ -22,9 +22,18 @@ namespace ColorGame.Scripts.PlayerStorage
             OnSaveUpdated?.Invoke(PanelType.Avatar);
         }
 
-        public Color GetTrialColor()
+        public Color GetStartTrailColor()
         {
-            return _playerStorageSave.PlayerTrial;
+            var endColor = _playerStorageSave.PlayerTrial;
+            endColor.a = 1;
+            return endColor;
+        }
+
+        public Color GetEndTrailColor()
+        {
+            var endColor = _playerStorageSave.PlayerTrial;
+            endColor.a = 0;
+            return endColor;
         }
 
         public void SaveTrial(Color trial)

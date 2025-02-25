@@ -16,7 +16,7 @@ namespace ColorGame.Scripts.UI.MainMenu
         public override void Init(PanelType panelType)
         {
             AvatarSprite = GameHandler.Instance.PlayerStorageController.GetAvatar();
-            TrailColor = GameHandler.Instance.PlayerStorageController.GetTrialColor();
+            TrailColor = GameHandler.Instance.PlayerStorageController.GetStartTrailColor();
             ColorPalette = GameHandler.Instance.PlayerStorageController.GetColorPalette();
             
             base.Init(panelType);
