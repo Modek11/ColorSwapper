@@ -1,4 +1,4 @@
-﻿using ColorGame.Scripts.Colors;
+﻿using ColorGame.Scripts.GameVisuals.Colors;
 using UnityEngine;
 using UnityEngine.UI;
 

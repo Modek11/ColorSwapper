@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1574901493873761577}
   - component: {fileID: 5307649459058675672}
   - component: {fileID: 5143182736568130458}
+  - component: {fileID: 4581365642664229082}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -46,11 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67afc45da1b93be40baccde3fa41e145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 0
-  colorsHandler: {fileID: 5307649459058675672}
+  dontDestroyOnLoad: 1
+  gameVisualsHandler: {fileID: 5307649459058675672}
   objectSpawner: {fileID: 0}
   playerController: {fileID: 0}
   currencyHandler: {fileID: 5143182736568130458}
+  playerStorageController: {fileID: 4581365642664229082}
 --- !u!114 &5307649459058675672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +65,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b53c281407350d46ab18237c35d7d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  avatarsHolder: {fileID: 11400000, guid: 4cb8d393d3cabb1419f16ca7940aefb9, type: 2}
+  trailsHolder: {fileID: 11400000, guid: f1fef19b38898e34c83a6039ae73d43f, type: 2}
   colorPalettesHolder: {fileID: 11400000, guid: f2cba078c683ed347951a456a004cb89, type: 2}
 --- !u!114 &5143182736568130458
 MonoBehaviour:
@@ -76,3 +80,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5787c4c985cbcb4a9f6fbc2bbbeaef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4581365642664229082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707826055450619267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6832916a39545b1bbeaae494291f8ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerStorageSave: {fileID: 11400000, guid: 137ef989cdb54434da39ba938c48d440, type: 2}

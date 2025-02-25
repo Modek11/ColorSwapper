@@ -21,7 +21,7 @@ namespace ColorGame.Scripts.GameHandlers
         {
             if (obj.CompareTag(GameTags.ColorChanger))
             {
-                GameHandler.Instance.ColorsHandler.ChangeCurrentActiveColor();
+                GameHandler.Instance.GameVisualsHandler.ChangeCurrentActiveColor();
             }
 
             if (obj.CompareTag(GameTags.Star))

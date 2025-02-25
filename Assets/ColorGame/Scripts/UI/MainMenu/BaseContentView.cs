@@ -1,4 +1,5 @@
-﻿using ColorGame.Scripts.Colors;
+﻿using ColorGame.Scripts.GameHandlers;
+using ColorGame.Scripts.GameVisuals.Colors;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,24 +11,26 @@ namespace ColorGame.Scripts.UI.MainMenu
         protected Image _imageDisplay;
         
         public Sprite AvatarSprite { get; set; }
-        public Sprite TrailSprite { get; set; }
+        public Color TrailColor { get; set; }
         public ColorPalette ColorPalette { get; set; }
         
-        public override void Init(PanelType panelType, object customObject = null)
+        public override void Init(PanelType panelType)
         {
             TryAssignReferences();
             ChangeGameObjectActivity(panelType);
-            base.Init(panelType, customObject);
+            base.Init(panelType);
         }
 
         protected override void InitAvatars(PanelType panelType)
         {
             _imageDisplay.sprite = AvatarSprite;
+            _imageDisplay.color = GameHandler.Instance.GameVisualsHandler.BaseAvatarColor;
         }
 
         protected override void InitTrails(PanelType panelType)
         {
-            _imageDisplay.sprite = TrailSprite;
+            _imageDisplay.sprite = GameHandler.Instance.GameVisualsHandler.TrailPreviewSprite;
+            _imageDisplay.color = TrailColor;
         }
 
         protected override void InitColorPalettes(PanelType panelType)

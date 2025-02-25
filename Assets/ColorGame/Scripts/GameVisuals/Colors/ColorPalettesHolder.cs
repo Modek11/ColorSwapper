@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ColorGame.Scripts.Colors
+namespace ColorGame.Scripts.GameVisuals.Colors
 {
     [CreateAssetMenu(fileName = "ColorPalette", menuName = "ScriptableObjects/ColorPalettes")]
     public class ColorPalettesHolder : ScriptableObject

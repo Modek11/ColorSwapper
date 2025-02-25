@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ColorGame.Scripts.Colors
+namespace ColorGame.Scripts.GameVisuals.Colors
 {
     public class ColorElement : MonoBehaviour
     {

@@ -1,11 +1,18 @@
-﻿using UnityEngine;
+﻿using ColorGame.Scripts.GameHandlers;
+using ColorGame.Scripts.PlayerStorage;
+using UnityEngine;
 
 namespace ColorGame.Scripts.UI.MainMenu
 {
     public abstract class BaseInitializableByPanelType : MonoBehaviour
     {
-        public virtual void Init(PanelType panelType, object customObject = null)
+        protected PlayerStorageController PlayerStorageController => GameHandler.Instance != null ? GameHandler.Instance.PlayerStorageController : null;
+        
+        protected PanelType CurrentPanelType { get; set; }
+        
+        public virtual void Init(PanelType panelType)
         {
+            CurrentPanelType = panelType;
             switch (panelType)
             {
                 case PanelType.Avatar:

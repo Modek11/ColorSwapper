@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using ColorGame.Scripts.Colors;
 using ColorGame.Scripts.GameHandlers;
+using ColorGame.Scripts.GameVisuals.Colors;
 using ColorGame.Scripts.InteractableObjects.Obstacles;
 using ColorGame.Scripts.Patterns;
 using Cysharp.Threading.Tasks;
@@ -60,7 +60,8 @@ namespace ColorGame.Scripts.InteractableObjects
         {
             if (ShouldChangeOnGlobalColorChange && GameHandler.Instance != null)
             {
-                GameHandler.Instance.ColorsHandler.OnGlobalColorChanged += ChangeActiveColliders;
+                ChangeActiveColliders(GameHandler.Instance.GameVisualsHandler.CurrentActiveColor);
+                GameHandler.Instance.GameVisualsHandler.OnGlobalColorChanged += ChangeActiveColliders;
             }
             
             _token = new CancellationTokenSource();
@@ -86,7 +87,7 @@ namespace ColorGame.Scripts.InteractableObjects
         {
             if (GameHandler.Instance != null)
             {
-                GameHandler.Instance.ColorsHandler.OnGlobalColorChanged -= ChangeActiveColliders;
+                GameHandler.Instance.GameVisualsHandler.OnGlobalColorChanged -= ChangeActiveColliders;
             }
             
             _token.Cancel();
@@ -109,7 +110,7 @@ namespace ColorGame.Scripts.InteractableObjects
 
         private void SetupColors()
         {
-            var colorPalette = GameHandler.Instance.ColorsHandler.CurrentActiveColorPalette;
+            var colorPalette = GameHandler.Instance.GameVisualsHandler.CurrentActiveColorPalette;
 
             for (var i = 0; i < ColorElementsList.Count; i++)
             {

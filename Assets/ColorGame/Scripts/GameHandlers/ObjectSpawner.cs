@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using ColorGame.Scripts.InteractableObjects;
 using ColorGame.Scripts.InteractableObjects.Collectables;
-using ColorGame.Scripts.InteractableObjects.Obstacles;
 using ColorGame.Scripts.InteractableObjects.Obstacles.DeathObstacles;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ColorGame.Scripts.GameHandlers
 {
@@ -21,7 +21,12 @@ namespace ColorGame.Scripts.GameHandlers
         private readonly Vector3 _firstObstaclePosition = new Vector3(0, -1.4f, 0); //half height of first object
         private Vector3 _nextObstacleStartingPosition;
         private float _previousObstacleHeight;
-        
+
+        private void Awake()
+        {
+            GameHandler.Instance.SetObjectSpawner(this);
+        }
+
         private void Start()
         {
             SpawnDeathObstacles();
@@ -35,7 +40,7 @@ namespace ColorGame.Scripts.GameHandlers
                 SpawnObstacle(obstacles[randomIndex]);
             }
             
-            GameHandler.Instance.ColorsHandler.ChangeCurrentActiveColor();
+            GameHandler.Instance.GameVisualsHandler.ChangeCurrentActiveColor();
         }
 
         private void SpawnObstacle(BaseObjectController objectToSpawn)

@@ -8,32 +8,30 @@ namespace ColorGame.Scripts.UI.MainMenu
     {
         [SerializeField] private ListContentViewController _listContentViewPrefab;
         [SerializeField] private RectTransform _parentTransform;
-        
-        [Space]
-        [SerializeField] private Sprite _avatarSprite; // TODO [mt]: to remove
-        [SerializeField] private Sprite _trailSprite; // TODO [mt]: to remove
 
         private readonly List<ListContentViewController> _currentActiveElements = new();
 
         protected override void InitAvatars(PanelType panelType)
         {
-            for (var i = 0; i < 5; i++)
+            var avatars = GameHandler.Instance.GameVisualsHandler.AvailableAvatars;
+            foreach (var avatar in avatars)
             {
-                InitViewInternal(panelType, _avatarSprite);
+                InitViewInternal(panelType, avatar);
             }
         }
 
         protected override void InitTrails(PanelType panelType)
         {
-            for (var i = 0; i < 5; i++)
+            var trails = GameHandler.Instance.GameVisualsHandler.AvailableTrails;
+            foreach (var trail in trails)
             {
-                InitViewInternal(panelType, _trailSprite);
+                InitViewInternal(panelType, trail);
             }
         }
 
         protected override void InitColorPalettes(PanelType panelType)
         { 
-            var palettes = GameHandler.Instance.ColorsHandler.AvailableColorPalettes;
+            var palettes = GameHandler.Instance.GameVisualsHandler.AvailableColorPalettes;
             foreach (var palette in palettes)
             {
                 InitViewInternal(panelType, palette);

@@ -1,4 +1,4 @@
-using ColorGame.Scripts.Colors;
+using ColorGame.Scripts.GameVisuals.Colors;
 using ColorGame.Scripts.InteractableObjects.Collectables;
 using Cysharp.Threading.Tasks;
 using UnityEngine;

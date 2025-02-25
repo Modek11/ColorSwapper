@@ -1,4 +1,4 @@
-﻿using ColorGame.Scripts.Colors;
+﻿using ColorGame.Scripts.GameVisuals.Colors;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,14 +11,18 @@ namespace ColorGame.Scripts.UI.MainMenu
 
         private object _customObject;
 
-        public override void Init(PanelType panelType, object customObject = null)
+        public void Init(PanelType panelType, object customObject = null)
         {
-            //TODO [mt]: handle clicking on button
-            
             _customObject = customObject;
-            base.Init(panelType, customObject);
+            base.Init(panelType);
+            _button.onClick.AddListener(() => OverrideSave(panelType, customObject));
         }
-        
+
+        public override void Init(PanelType panelType)
+        {
+            Debug.LogError($"Used wrong Init! Try Another overload");
+        }
+
         protected override void InitAvatars(PanelType panelType)
         {
             AvatarSprite = _customObject as Sprite;
@@ -27,7 +31,7 @@ namespace ColorGame.Scripts.UI.MainMenu
 
         protected override void InitTrails(PanelType panelType)
         {
-            TrailSprite = _customObject as Sprite;
+            TrailColor = (Color)_customObject;
             base.InitTrails(panelType);
         }
 
@@ -50,6 +54,32 @@ namespace ColorGame.Scripts.UI.MainMenu
             }
             
             base.TryAssignReferences();
+        }
+
+        private void OverrideSave(PanelType panelType, object customObject)
+        {
+            if (customObject == null)
+            {
+                return;
+            }
+            
+            switch (panelType)
+            {
+                case PanelType.Avatar:
+                    PlayerStorageController.SaveAvatarSprite(customObject as Sprite);
+                    break;
+                case PanelType.Trails:
+                    PlayerStorageController.SaveTrial((Color)customObject);
+                    break;
+                case PanelType.ColorPalette:
+                    PlayerStorageController.SaveColorPalette(customObject as ColorPalette);
+                    break;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            _button.onClick.RemoveAllListeners();
         }
     }
 }

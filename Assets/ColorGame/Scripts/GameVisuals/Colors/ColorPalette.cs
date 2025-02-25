@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace ColorGame.Scripts.Colors
+namespace ColorGame.Scripts.GameVisuals.Colors
 {
     [Serializable]
     public class ColorPalette

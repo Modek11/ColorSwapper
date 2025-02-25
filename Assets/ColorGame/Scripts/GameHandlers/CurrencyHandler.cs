@@ -13,12 +13,13 @@ namespace ColorGame.Scripts.GameHandlers
             private set
             {
                 _currentPoints = value;
-                //TODO in the future this should send some kind of Action to update ex. UI and save
+                //TODO [mt]: in the future this should send some kind of Action to update ex. UI and save
             }
         }
 
         public void StarCollected()
         {
+            //TODO [mt]: probably we can remove those start collecting 
             Debug.Log($"Star collected");
             CurrentPoints++;
         }

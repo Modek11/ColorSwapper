@@ -7,15 +7,27 @@ namespace ColorGame.Scripts.UI.MainMenu
     { 
         [Space]
         [SerializeField] private Sprite _avatarSprite;
-        [SerializeField] private Sprite _trailSprite;
 
-        public override void Init(PanelType panelType, object customObject = null)
+        private void Awake()
         {
-            AvatarSprite = _avatarSprite;
-            TrailSprite = _trailSprite;
-            ColorPalette = GameHandler.Instance.ColorsHandler.CurrentActiveColorPalette;
+            PlayerStorageController.OnSaveUpdated += Init;
+        }
+
+        public override void Init(PanelType panelType)
+        {
+            AvatarSprite = GameHandler.Instance.PlayerStorageController.GetAvatar();
+            TrailColor = GameHandler.Instance.PlayerStorageController.GetTrialColor();
+            ColorPalette = GameHandler.Instance.PlayerStorageController.GetColorPalette();
             
-            base.Init(panelType, customObject);
+            base.Init(panelType);
+        }
+
+        private void OnDestroy()
+        {
+            if (PlayerStorageController != null)
+            {
+                PlayerStorageController.OnSaveUpdated -= Init;
+            }
         }
     }
 }

@@ -18,14 +18,15 @@ namespace ColorGame.Scripts.Player
         
         public event Action<GameObject> OnPlayerPickup;
         public event Action<GameObject> OnPlayerDie;
-        
+
         private void Awake()
         {
-            GameHandler.Instance.ColorsHandler.OnGlobalColorChanged += OnGlobalColorChanged;
+            GameHandler.Instance.SetPlayerController(this);
+            GameHandler.Instance.GameVisualsHandler.OnGlobalColorChanged += OnGlobalGameVisualChanged;
             _swipeDetector.OnSwipeUpdated += OnSwipeUpdated;
         }
 
-        private void OnGlobalColorChanged(Color color)
+        private void OnGlobalGameVisualChanged(Color color)
         {
             playerSpriteRenderer.color = color;
         }
@@ -67,7 +68,7 @@ namespace ColorGame.Scripts.Player
         {
             if (GameHandler.Instance != null)
             {
-                GameHandler.Instance.ColorsHandler.OnGlobalColorChanged -= OnGlobalColorChanged;
+                GameHandler.Instance.GameVisualsHandler.OnGlobalColorChanged -= OnGlobalGameVisualChanged;
             }
         }
     }

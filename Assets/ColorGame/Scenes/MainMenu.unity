@@ -4677,8 +4677,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _listContentViewPrefab: {fileID: 1248855331153981186, guid: 244f96619af737340b1def01eb17b569, type: 3}
   _parentTransform: {fileID: 7448596420421772577}
-  _avatarSprite: {fileID: 21300000, guid: cb3974267d11c8d428640f8fadfd9414, type: 3}
-  _trailSprite: {fileID: 21300000, guid: 99bb95cd1d5a33244be1710d440a5d50, type: 3}
 --- !u!114 &7448596420421772576
 MonoBehaviour:
   m_ObjectHideFlags: 0
