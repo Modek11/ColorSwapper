@@ -20,6 +20,11 @@ namespace ColorGame.Scripts.CameraScripts
 
         private void FixedUpdate()
         {
+            if (_playerTransform == null)
+            {
+                return;
+            }
+            
             if (_playerTransform.position.y > transform.position.y)
             {
                 OverrideTargetPositionY(_playerTransform.transform.position.y);

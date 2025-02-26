@@ -1,10 +1,10 @@
+using ColorGame.Scripts.GameHandlers;
 using ColorGame.Scripts.Globals;
 using ColorGame.Scripts.InteractableObjects;
 using ColorGame.Scripts.InteractableObjects.Obstacles;
-using ColorGame.Scripts.Player;
 using UnityEngine;
 
-namespace ColorGame.Scripts.GameHandlers
+namespace ColorGame.Scripts.Player
 {
     public class PlayerCollisionHandler : MonoBehaviour
     {
@@ -14,7 +14,6 @@ namespace ColorGame.Scripts.GameHandlers
         private void Start()
         {
             playerController.OnPlayerPickup += OnPlayerPickup;
-            playerController.OnPlayerDie += OnPlayerDie;
         }
         
         private void OnPlayerPickup(GameObject obj)
@@ -26,7 +25,7 @@ namespace ColorGame.Scripts.GameHandlers
 
             if (obj.CompareTag(GameTags.Star))
             {
-                GameHandler.Instance.CurrencyHandler.StarCollected();
+                GameHandler.Instance.ScoreHandler.StarCollected();
             }
 
             TryDestroyCollectedObject(obj);
@@ -49,12 +48,6 @@ namespace ColorGame.Scripts.GameHandlers
             }
             
             Debug.LogError($"Collided with object and can't destroy it", obj);
-        }
-
-        private void OnPlayerDie(GameObject obj)
-        {
-            //TODO: end game
-            Debug.Log("Obstacle! :(");
         }
     }
 }

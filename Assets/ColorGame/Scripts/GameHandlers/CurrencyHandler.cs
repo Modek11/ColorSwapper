@@ -1,27 +1,49 @@
+using ColorGame.Scripts.PlayerStorage;
 using UnityEngine;
 
 namespace ColorGame.Scripts.GameHandlers
 {
     public class CurrencyHandler : MonoBehaviour
     {
-        private int _currentPoints;
+        public int CurrentScore { get; set; }
 
-        public int CurrentPoints
+        private PlayerStorageController Storage => GameHandler.Instance.PlayerStorageController;
+
+        private void Start()
         {
-            get => _currentPoints;
+            GameHandler.Instance.OnPlayerSpawned += Reset;
+        }
 
-            private set
+        private void Reset()
+        {
+            CurrentScore = 0;
+        }
+
+        public void GetCalculatedScores(out int currentScore, out int highestScore)
+        {
+            highestScore = Storage.GetHighestScore();
+            if (CurrentScore > highestScore)
             {
-                _currentPoints = value;
-                //TODO [mt]: in the future this should send some kind of Action to update ex. UI and save
+                Storage.SaveHighestScore(CurrentScore);
+                currentScore = highestScore = CurrentScore;
+            }
+            else
+            {
+                currentScore = CurrentScore;
             }
         }
 
         public void StarCollected()
         {
-            //TODO [mt]: probably we can remove those start collecting 
-            Debug.Log($"Star collected");
-            CurrentPoints++;
+            CurrentScore++;
+        }
+
+        private void OnDestroy()
+        {
+            if (GameHandler.Instance != null)
+            {
+                GameHandler.Instance.OnPlayerSpawned -= Reset;
+            }
         }
     }
 }

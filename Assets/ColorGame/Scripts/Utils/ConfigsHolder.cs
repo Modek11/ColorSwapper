@@ -33,6 +33,7 @@ namespace ColorGame.Scripts.Utils
             if(GUILayout.Button("Redraw Config Instances", GUILayout.Height(40)))
             {
                 _targetClass.Configs = RedrawConfigInstances();
+                EditorUtility.SetDirty(_targetClass);
             }
             
             GUILayout.Space(20);

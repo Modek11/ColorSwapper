@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using ColorGame.Scripts.GameHandlers;
 using ColorGame.Scripts.GameVisuals.Colors;
+using ColorGame.Scripts.Globals;
 using ColorGame.Scripts.InteractableObjects.Obstacles;
-using ColorGame.Scripts.Patterns;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -144,6 +144,11 @@ namespace ColorGame.Scripts.InteractableObjects
 
         private void CheckDistanceBetweenPlayer()
         {
+            if (GameHandler.Instance.PlayerController == null)
+            {
+                return;
+            }
+            
             var position = transform.position;
             var playerPosition = GameHandler.Instance.PlayerController.transform.position;
             var distance = Vector3.Distance(position, playerPosition);

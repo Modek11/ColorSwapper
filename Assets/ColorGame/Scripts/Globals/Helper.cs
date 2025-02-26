@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ColorGame.Scripts.Patterns
+namespace ColorGame.Scripts.Globals
 {
     public static class Helper
     {

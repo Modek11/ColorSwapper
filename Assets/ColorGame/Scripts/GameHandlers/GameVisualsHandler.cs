@@ -27,6 +27,11 @@ namespace ColorGame.Scripts.GameHandlers
         
         public event Action<Color> OnGlobalColorChanged;
 
+        private void Start()
+        {
+            GameHandler.Instance.OnPlayerSpawned += ChangeCurrentActiveColor;
+        }
+
         public void ChangeCurrentActiveColor()
         {
             var randomIndex = Random.Range(0, CurrentActiveColorPalette.Count);

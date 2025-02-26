@@ -4,8 +4,7 @@ using UnityEngine;
 namespace ColorGame.Scripts.UI.MainMenu
 {
     public class MainContentViewController : BaseContentView
-    { 
-        [Space]
+    {
         [SerializeField] private Sprite _avatarSprite;
 
         private void Awake()
@@ -16,7 +15,7 @@ namespace ColorGame.Scripts.UI.MainMenu
         public override void Init(PanelType panelType)
         {
             AvatarSprite = GameHandler.Instance.PlayerStorageController.GetAvatar();
-            TrailColor = GameHandler.Instance.PlayerStorageController.GetStartTrailColor();
+            TrailColor = GameHandler.Instance.PlayerStorageController.GetTrail();
             ColorPalette = GameHandler.Instance.PlayerStorageController.GetColorPalette();
             
             base.Init(panelType);

@@ -11,6 +11,16 @@ namespace ColorGame.Scripts.PlayerStorage
 
         public event Action<PanelType> OnSaveUpdated;
 
+        public int GetHighestScore()
+        {
+            return _playerStorageSave.HighestScore;
+        }
+
+        public void SaveHighestScore(int score)
+        {
+            _playerStorageSave.HighestScore = score;
+        }
+
         public Sprite GetAvatar()
         {
             return _playerStorageSave.PlayerAvatar;
@@ -20,6 +30,11 @@ namespace ColorGame.Scripts.PlayerStorage
         {
             _playerStorageSave.PlayerAvatar = avatar;
             OnSaveUpdated?.Invoke(PanelType.Avatar);
+        }
+
+        public Color GetTrail()
+        {
+            return _playerStorageSave.PlayerTrial;
         }
 
         public Color GetStartTrailColor()

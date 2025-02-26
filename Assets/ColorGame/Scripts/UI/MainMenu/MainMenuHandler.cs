@@ -25,7 +25,6 @@ namespace ColorGame.Scripts.UI.MainMenu
 
         private void OnPlayButtonClicked()
         {
-            Destroy(_gameHandler.gameObject);
             SceneManager.LoadScene(1);
         }
 

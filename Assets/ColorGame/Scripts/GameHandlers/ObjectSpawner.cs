@@ -25,10 +25,20 @@ namespace ColorGame.Scripts.GameHandlers
         private void Awake()
         {
             GameHandler.Instance.SetObjectSpawner(this);
+            if (GameHandler.Instance.PlayerController != null)
+            {
+                SpawnObstacles();
+            }
+            else
+            {
+                GameHandler.Instance.OnPlayerSpawned += SpawnObstacles;
+            }
         }
 
-        private void Start()
+        private void SpawnObstacles()
         {
+            GameHandler.Instance.OnPlayerSpawned -= SpawnObstacles;
+            
             SpawnDeathObstacles();
             
             _nextObstacleStartingPosition = _firstObstaclePosition;

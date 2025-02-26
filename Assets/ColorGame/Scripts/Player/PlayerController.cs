@@ -22,7 +22,7 @@ namespace ColorGame.Scripts.Player
 
         private void Awake()
         {
-            GameHandler.Instance.SetPlayerController(this);
+            GameHandler.Instance.InvokeOnPlayerSpawned(this);
             GameHandler.Instance.GameVisualsHandler.OnGlobalColorChanged += OnGlobalGameVisualChanged;
             _swipeDetector.OnSwipeUpdated += OnSwipeUpdated;
             SetupPlayerVisuals();
@@ -35,6 +35,7 @@ namespace ColorGame.Scripts.Player
 
         private void SetupPlayerVisuals()
         {
+            OnGlobalGameVisualChanged(GameHandler.Instance.GameVisualsHandler.CurrentActiveColor);
             playerSpriteRenderer.sprite = GameHandler.Instance.PlayerStorageController.GetAvatar();
             playerTrailRenderer.startColor = GameHandler.Instance.PlayerStorageController.GetStartTrailColor();
             playerTrailRenderer.endColor = GameHandler.Instance.PlayerStorageController.GetEndTrailColor();

@@ -51,8 +51,9 @@ MonoBehaviour:
   gameVisualsHandler: {fileID: 5307649459058675672}
   objectSpawner: {fileID: 0}
   playerController: {fileID: 0}
-  currencyHandler: {fileID: 5143182736568130458}
+  scoreHandler: {fileID: 5143182736568130458}
   playerStorageController: {fileID: 4581365642664229082}
+  gameOverController: {fileID: 0}
 --- !u!114 &5307649459058675672
 MonoBehaviour:
   m_ObjectHideFlags: 0
