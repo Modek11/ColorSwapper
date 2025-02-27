@@ -18,11 +18,19 @@ namespace ColorGame.Scripts.InteractableObjects
         private const float RotateRight = -360;
         private const float RotateLeft = 360;
         
-        [SerializeField] private ObstacleParent obstacleParent;
-        [SerializeField] private bool randomizeRotation;
+        [SerializeField] protected ObstacleParent obstacleParent;
+        
+        [Space]
+        [SerializeField] private bool randomizeRotation; // start rotation
         [SerializeField] private bool enableRotation;
         [SerializeField] private bool invertRotationRandomly;
         [SerializeField] private float rotationDuration;
+        
+        [Space]
+        [SerializeField] protected bool randomizeMovement = false; // start movement pos
+        [SerializeField] protected bool enableMovement = false;
+        [SerializeField] protected bool invertMovementRandomly = false;
+        [SerializeField] protected float movementDuration = 5f;
         
         [SerializeField, HideInInspector] private List<ColorElement> colorElementsAList = new();
         [SerializeField, HideInInspector] private List<ColorElement> colorElementsBList = new();
@@ -54,8 +62,6 @@ namespace ColorGame.Scripts.InteractableObjects
 
         public float ObstacleHeight => obstacleParent.ObstacleHeight;
         
-        //TODO: star should be created here, prob as a list because some obstacles can have more than one
-        
         protected void Awake()
         {
             if (ShouldChangeOnGlobalColorChange && GameHandler.Instance != null)
@@ -80,6 +86,16 @@ namespace ColorGame.Scripts.InteractableObjects
             if (enableRotation)
             {
                 StartRotating();
+            }
+
+            if (enableMovement)
+            {
+                StartMovement();
+            }
+
+            if (randomizeMovement)
+            {
+                RandomizeMovement();
             }
         }
 
@@ -106,6 +122,16 @@ namespace ColorGame.Scripts.InteractableObjects
         {
             var random = UnityEngine.Random.Range(0, 360);
             obstacleParent.transform.localEulerAngles = new Vector3(0, 0, random);
+        }
+
+        protected virtual void StartMovement()
+        {
+            Debug.LogError($"Movement not implemented!");
+        }
+
+        protected virtual void RandomizeMovement()
+        {
+            Debug.LogError($"Movement not implemented!");
         }
 
         private void SetupColors()
